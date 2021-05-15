@@ -1,4 +1,7 @@
 [ORG 0x7e00]
+
+KERNEL_SPACE equ 0x8600
+
 mov si, ExtendedSpaceSuccess
 call afficher
 mov si, ProtectedModeLoading
@@ -41,13 +44,6 @@ RegisterCR0: db "Modifying CR0 bit ...", 13, 10, 0
 
 [BITS 32]
 
-;EXTERN putchar
-;GLOBAL _start
-
 ProtectedMode:
-	mov eax, 'A'
-	push eax
-	;call putchar
-	pop eax
-	jmp $
+	jmp dword codeseg:KERNEL_SPACE
 times 2048-($-$$) db 0
