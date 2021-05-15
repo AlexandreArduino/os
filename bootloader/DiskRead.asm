@@ -1,4 +1,3 @@
-PROGRAM_SPACE equ 0x7e00
 ReadDisk:
 	mov ah, 0x02
 	mov bx, PROGRAM_SPACE
@@ -16,5 +15,5 @@ DiskReadErrorString:
 	db "Disk Read failed !", 13, 10, 0
 DiskReadFailed:
 	mov si, DiskReadErrorString
-	call afficher
+	call printasm
 	jmp $

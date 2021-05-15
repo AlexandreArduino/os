@@ -1,16 +1,19 @@
+%include "Segment.asm"
 [BITS 16]
-[ORG 0x7c00]
+[ORG BOOTLOADER_SPACE]
 
     mov ax, 0x0
     mov ds, ax
     mov es, ax
-    mov ax, 0x8000
-    mov ss, ax
-    mov sp, 0xf000
+    mov ax, TOP_STACK
+    mov ss, ax ;Start of the stack
+    mov sp, BOTTOM_STACK
+    mov si, author
+    call printasm
     mov si, boot_started
-    call afficher
+    call printasm
     mov si, reading_disk
-    call afficher
+    call printasm
     mov [BOOT_DISK], dl
     call ReadDisk
     jmp PROGRAM_SPACE
@@ -20,6 +23,7 @@ end:
 %include "print.asm"
 %include "DiskRead.asm"
 
+author: db "BAALBAKY Alexandre 05/2021 - 05/2021", 13, 10, 0
 boot_started: db "Bootloader started !", 13, 10, 0
 reading_disk: db "Reading disk ...", 13, 10, 0
 

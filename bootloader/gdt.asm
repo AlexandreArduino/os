@@ -19,6 +19,6 @@ gdt_end
 gdt_descriptor:
 	gdt_size:
 		dw gdt_end - gdt_nulldesc - 1
-		dq gdt_nulldesc
+		dd gdt_nulldesc
 codeseg equ gdt_codedesc - gdt_nulldesc
 dataseg equ gdt_datadesc - gdt_nulldesc

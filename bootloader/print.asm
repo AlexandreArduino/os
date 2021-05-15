@@ -1,4 +1,4 @@
-afficher:
+printasm:
     push ax
     push bx
 .debut:

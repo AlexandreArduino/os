@@ -1,11 +1,9 @@
-[ORG 0x7e00]
-
-KERNEL_SPACE equ 0x8600
+[ORG 0x8DA6]
 
 mov si, ExtendedSpaceSuccess
-call afficher
+call printasm
 mov si, ProtectedModeLoading
-call afficher
+call printasm
 jmp EnterProtectedMode
 
 %include "gdt.asm"
@@ -13,14 +11,17 @@ jmp EnterProtectedMode
 
 
 EnterProtectedMode:
+	call EnableA20
 	mov si, DisablingInterrupts
-	call afficher
+	call printasm
 	cli
 	mov si, LoadingGDT
-	call afficher
+	call printasm
 	lgdt [gdt_descriptor]
 	mov si, RegisterCR0
-	call afficher
+	call printasm
+	mov si, End16bits
+	call printasm
 	mov eax, cr0
 	or al, 1
 	mov cr0, eax
@@ -42,8 +43,20 @@ LoadingGDT: db "Loading GDT ...", 13, 10, 0
 
 RegisterCR0: db "Modifying CR0 bit ...", 13, 10, 0
 
+End16bits: db "Leaving 16 bits ...", 13, 10, 0
+
 [BITS 32]
 
+%include "CPUID.asm"
+
 ProtectedMode:
-	jmp dword codeseg:KERNEL_SPACE
+	mov ax, dataseg
+	mov ds, ax
+	mov ss, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
+	call DetectCPUID
+	call DetectLongMode
+	jmp $
 times 2048-($-$$) db 0
