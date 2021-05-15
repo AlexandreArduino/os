@@ -41,13 +41,13 @@ RegisterCR0: db "Modifying CR0 bit ...", 13, 10, 0
 
 [BITS 32]
 
-EXTERN putchar
-GLOBAL _start
+;EXTERN putchar
+;GLOBAL _start
 
 ProtectedMode:
 	mov eax, 'A'
 	push eax
-	call putchar
+	;call putchar
 	pop eax
 	jmp $
 times 2048-($-$$) db 0
