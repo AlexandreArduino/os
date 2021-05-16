@@ -1,4 +1,4 @@
-[ORG 0x8DA6]
+;[ORG 0x8DA6]
 
 mov si, ExtendedSpaceSuccess
 call printasm
@@ -48,6 +48,7 @@ End16bits: db "Leaving 16 bits ...", 13, 10, 0
 [BITS 32]
 
 %include "CPUID.asm"
+%include "Paging.asm"
 
 ProtectedMode:
 	mov ax, dataseg
@@ -58,5 +59,14 @@ ProtectedMode:
 	mov gs, ax
 	call DetectCPUID
 	call DetectLongMode
+	call SetUpIdentityPaging
+	call EditGDT
+	jmp codeseg:Start64Bit
+
+[BITS 64]
+[extern _start]
+
+Start64Bit:
+	call _start
 	jmp $
 times 2048-($-$$) db 0
