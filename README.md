@@ -16,9 +16,13 @@ You can find it in bootloader/. It has to :
     - set up the CPU in long mode
     - load the main function of the kernel
 
+Note
+
+    Program Space equ ExtendedProgram
+
 Memory segmentation from first sector to end of the Kernel space : 
 
-    0x7C00 - 0x7E00 - 0x8600 - 0x95A0
+    0x7C00 - 0x7E00 - 0x8600 -    0x95A0   - 
 
     -----------------------------------------------------
     |           |            |              |
