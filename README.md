@@ -1,5 +1,5 @@
 # os
-I'm trying to develop my own Operating System 32 bits because my computer has only 4GB of RAM
+I'm trying to develop my own Operating System 64 bits because it is fun :p
 
 # I) Bootloader
 

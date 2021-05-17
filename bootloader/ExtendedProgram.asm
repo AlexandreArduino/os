@@ -1,4 +1,5 @@
-[ORG 0x8DA6]
+%include "bootloader/Segment.asm"
+[ORG PROGRAM_SPACE]
 
 mov si, ExtendedSpaceSuccess
 call printasm
