@@ -6,8 +6,8 @@ mov si, ProtectedModeLoading
 call printasm
 jmp EnterProtectedMode
 
-%include "gdt.asm"
-%include "print.asm"
+%include "bootloader/gdt.asm"
+%include "bootloader/print.asm"
 
 
 EnterProtectedMode:
@@ -47,7 +47,7 @@ End16bits: db "Leaving 16 bits ...", 13, 10, 0
 
 [BITS 32]
 
-%include "CPUID.asm"
+%include "bootloader/CPUID.asm"
 
 ProtectedMode:
 	mov ax, dataseg

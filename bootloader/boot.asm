@@ -1,4 +1,4 @@
-%include "Segment.asm"
+%include "bootloader/Segment.asm"
 [BITS 16]
 [ORG BOOTLOADER_SPACE]
 
@@ -20,8 +20,8 @@
 end:
     jmp end
 
-%include "print.asm"
-%include "DiskRead.asm"
+%include "bootloader/print.asm"
+%include "bootloader/DiskRead.asm"
 
 author: db "BAALBAKY Alexandre 05/2021 - 05/2021", 13, 10, 0
 boot_started: db "Bootloader started !", 13, 10, 0
