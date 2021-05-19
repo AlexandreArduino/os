@@ -9,3 +9,4 @@ PROGRAM_SPACE equ 0x7e00
 TOP_STACK equ 0x8600
 BOTTOM_STACK equ 0x95A0
 PageTableEntry equ 0x1000
+VideoRAM_start equ 0xB8000

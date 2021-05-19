@@ -1,6 +1,5 @@
 %include "bootloader/Segment.asm"
 [ORG PROGRAM_SPACE]
-
 mov si, ExtendedSpaceSuccess
 call printasm
 mov si, ProtectedModeLoading
@@ -12,6 +11,12 @@ jmp EnterProtectedMode
 
 
 EnterProtectedMode:
+	mov ax, 0x0
+	mov ds, ax
+	mov es, ax
+	mov ax, TOP_STACK
+	mov ss, ax
+	mov sp, BOTTOM_STACK
 	call EnableA20
 	mov si, DisablingInterrupts
 	call printasm
@@ -62,8 +67,10 @@ ProtectedMode:
 	call DetectLongMode
 	call SetIdentityPaging
 	call EditGDT
-	jmp codeseg:Start64Bits
+	jmp codeseg:LongMode
 [BITS 64]
-Start64Bits:
+
+LongMode:
 	jmp $
+[BITS 16]
 times 2048-($-$$) db 0

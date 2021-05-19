@@ -35,3 +35,7 @@ Memory segmentation from first sector to end of the Kernel space :
 
     Minimal boot   Program        Stack         Kernel
        loader       Space                       Space
+
+# II) Test
+
+This directory is just here to test some code when I have to implement new things.
