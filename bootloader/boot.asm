@@ -3,8 +3,8 @@
 [ORG BOOTLOADER_SPACE]
 
     mov ax, 0x0
-    mov ds, ax
-    mov es, ax
+    mov ds, ax ;Changed by GDT
+    mov es, ax ;Changed by GDT
     mov ax, TOP_STACK
     mov ss, ax ;Start of the stack
     mov sp, BOTTOM_STACK

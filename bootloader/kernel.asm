@@ -1,7 +1,8 @@
-%include "bootloader/Segment.asm"
-
+;Just to load the real kernel
 [BITS 64]
-GLOBAL _start
+[ORG 0xA000]
 _start:
-    mov [VideoRAM_start], byte 'H'
     jmp $
+%include "bootloader/Segment.asm"
+[BITS 16]
+times 2048-($-$$) db 0

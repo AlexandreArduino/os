@@ -69,8 +69,7 @@ ProtectedMode:
 	call EditGDT
 	jmp codeseg:LongMode
 [BITS 64]
-
 LongMode:
-	jmp $
+	jmp KERNEL_SPACE
 [BITS 16]
 times 2048-($-$$) db 0
