@@ -28,3 +28,15 @@ clear: output/
 	rm -Rf output
 update_from_github:
 	git pull
+
+cbootloader: bootloader/boot.asm bootloader/ExtendedProgram.asm bootloader/kernel.asm
+	nasm -f bin -o output/bootloader/bootloader bootloader/boot.asm
+	nasm -f bin -o output/bootloader/ExtendedProgram bootloader/ExtendedProgram.asm
+	cat output/bootloader/bootloader output/bootloader/ExtendedProgram | dd of=output/bootsect bs=512 count=2880
+	#nasm -f elf64 -o output/kernel/kernel.o bootloader/kernel.asm
+clib: kernel/lib.c kernel/kernel.c
+	gcc -c kernel/kernel.c -o output/kernel/kernel.o
+	gcc -c kernel/lib.c -o output/kernel/lib.o
+clink: output/bootsect output/kernel/kernel.o output/kernel/lib.o
+	ld --oformat binary -Ttext A000 output/kernel/kernel.o output/kernel/lib.o -o output/ckernel
+	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
