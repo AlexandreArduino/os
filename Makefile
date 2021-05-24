@@ -1,4 +1,4 @@
-all: clean mbootloader kernel floppy boot
+all: clean cbootloader ckernel clink cboot
 
 clean: output/
 	clear
@@ -33,10 +33,11 @@ cbootloader: bootloader/boot.asm bootloader/ExtendedProgram.asm bootloader/kerne
 	nasm -f bin -o output/bootloader/bootloader bootloader/boot.asm
 	nasm -f bin -o output/bootloader/ExtendedProgram bootloader/ExtendedProgram.asm
 	cat output/bootloader/bootloader output/bootloader/ExtendedProgram | dd of=output/bootsect bs=512 count=2880
-	#nasm -f elf64 -o output/kernel/kernel.o bootloader/kernel.asm
-clib: kernel/lib.c kernel/kernel.c
-	gcc -c kernel/kernel.c -o output/kernel/kernel.o
-	gcc -c kernel/lib.c -o output/kernel/lib.o
-clink: output/bootsect output/kernel/kernel.o output/kernel/lib.o
-	ld --oformat binary -Ttext A000 output/kernel/kernel.o output/kernel/lib.o -o output/ckernel
+ckernel: kernel/kernel.cpp kernel/screen.cpp
+	x86_64-elf-gcc -c kernel/kernel.cpp -o output/kernel/kernel.o
+	x86_64-elf-g++ -c kernel/screen.cpp -o output/kernel/screen.o
+clink: output/bootsect
+	ld --oformat binary -Ttext 8600 output/kernel/kernel.o output/kernel/screen.o -o output/ckernel
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
+cboot: output/os
+	qemu-system-x86_64 output/os

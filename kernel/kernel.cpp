@@ -1,5 +1,9 @@
-extern "C" void _kernel()
-{
+#include "screen.h"
 
-    return;
+using namespace screen;
+
+extern "C" void _start()
+{
+    clear();
+    while(1);
 }
