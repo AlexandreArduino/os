@@ -5,6 +5,7 @@ ENTRY (_start)
 INPUT
 (
     output/kernel/kernel.o
+    output/kernel/screen.o
 )
 
 OUTPUT
