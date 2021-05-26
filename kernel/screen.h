@@ -2,6 +2,7 @@
 #include "types.h"
 #define VIDEO_MEMORY 0xB8000
 #define SIZE_SCREEN 4000
+#define LENGTH_LINE 80
 #define BLACK 0
 #define BLUE 1
 #define GREEN 2
@@ -20,7 +21,10 @@
 #define WHITE 15
 namespace screen
 {
+    extern unsigned int CursorPosition;
     void clear();
     void putchar(char c, u16 color, u16 position);
-    void print(char *str, u16 color, u16 position);
+    void print(char *str, u16 color, u16 position, u16 _line);
+    void setCursorPosition(unsigned short position);
+    void refreshCursorPosition(int value);
 };

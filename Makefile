@@ -30,9 +30,11 @@ cbootloader: bootloader/boot.asm bootloader/ExtendedProgram.asm bootloader/kerne
 	nasm -f bin -o output/bootloader/bootloader bootloader/boot.asm
 	nasm -f bin -o output/bootloader/ExtendedProgram bootloader/ExtendedProgram.asm
 	cat output/bootloader/bootloader output/bootloader/ExtendedProgram | dd of=output/bootsect bs=512 count=2880
-ckernel: kernel/kernel.cpp kernel/screen.cpp
+ckernel: kernel/kernel.cpp kernel/screen.cpp kernel/log.cpp
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/kernel.cpp -o output/kernel/kernel.o
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/screen.cpp -o output/kernel/screen.o
+	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/log.cpp -o output/kernel/log.o
+	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/IO.cpp -o output/kernel/IO.o
 clink: output/bootsect
 	#ld --oformat binary -Ttext 8600 output/kernel/kernel.o output/kernel/screen.o -o output/ckernel
 	x86_64-elf-ld -T"link.ld"

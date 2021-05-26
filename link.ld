@@ -6,6 +6,8 @@ INPUT
 (
     output/kernel/kernel.o
     output/kernel/screen.o
+    output/kernel/log.o
+    output/kernel/IO.o
 )
 
 OUTPUT
