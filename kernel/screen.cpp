@@ -24,10 +24,11 @@ void screen::putchar(char c, u16 color, u16 position)
 
 void screen::print(char *str, u16 color, u16 position)
 {
-    putchar(*str, color, position);
-}
-
-void screen::pprint(char *str)
-{
-    putchar(*str, GREEN, 0);
+    u8 count = 0;
+    while(*str != 0)
+    {
+        putchar(*str, color, position + count);
+        count += 1;
+        str++;
+    }
 }

@@ -23,5 +23,4 @@ namespace screen
     void clear();
     void putchar(char c, u16 color, u16 position);
     void print(char *str, u16 color, u16 position);
-    void pprint(char *str);
 };
