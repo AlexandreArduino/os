@@ -46,12 +46,7 @@ namespace screen
         void putchar(char c, unsigned short color, unsigned short x, unsigned short y);
         void putchar(char c, unsigned short color, unsigned short position);
         void print(char *str, unsigned short color, unsigned short position);
+        void print(char *str, unsigned short color, unsigned short x, unsigned short y);
         unsigned short GetLocation(unsigned short x, unsigned short y);
-    };
-
-    namespace Dev
-    {
-        void putcharWithoutCursor(char c, unsigned short color, unsigned short position);
-        void PrintWithoutCursor(char *str, unsigned short color, unsigned short StartPosition);
     };
 };

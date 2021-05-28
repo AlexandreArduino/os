@@ -3,8 +3,6 @@
 extern "C" void _start()
 {
     screen::clear();
-    /*screen::Text::putchar('H', YELLOW, 0,0);
-    screen::Text::putchar('H', GREEN, 25, 14);*/
-    screen::Dev::PrintWithoutCursor("Hello", PURPLE, 0);
+    screen::Text::print("Kernel loaded !", GREEN, 0, 0);
     while(1);
 }

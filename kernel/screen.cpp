@@ -129,21 +129,7 @@ void screen::Text::print(char *str, unsigned short color, unsigned short positio
     }
 }
 
-void screen::Dev::putcharWithoutCursor(char c, unsigned short color, unsigned short position)
+void screen::Text::print(char *str, unsigned short color, unsigned short x, unsigned short y)
 {
-    char *video = (char*)(VIDEO_MEMORY + position);
-    *video = c;
-    char *colour = (char*)(VIDEO_MEMORY + position + 1);
-    *colour = color;
-}
-
-void screen::Dev::PrintWithoutCursor(char *str, unsigned short color, unsigned short StartPosition)
-{
-    u8 count = 0;
-    while(*str != 0)
-    {
-        screen::Dev::putcharWithoutCursor(*str, color, StartPosition + count);
-        count += 1;
-        str++;
-    }
+    screen::Text::print(str, color, screen::Text::GetLocation(x*2, y));
 }
