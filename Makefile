@@ -34,6 +34,7 @@ ckernel: kernel/kernel.cpp kernel/screen.cpp
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/kernel.cpp -o output/kernel/kernel.o
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/screen.cpp -o output/kernel/screen.o
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/IO.cpp -o output/kernel/IO.o
+	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/log.cpp -o output/kernel/log.o
 clink: output/bootsect
 	#ld --oformat binary -Ttext 8600 output/kernel/kernel.o output/kernel/screen.o -o output/ckernel
 	x86_64-elf-ld -T"link.ld"

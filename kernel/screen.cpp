@@ -131,5 +131,12 @@ void screen::Text::print(char *str, unsigned short color, unsigned short positio
 
 void screen::Text::print(char *str, unsigned short color, unsigned short x, unsigned short y)
 {
-    screen::Text::print(str, color, screen::Text::GetLocation(x*2, y));
+    //screen::Text::print(str, color, screen::Text::GetLocation(x*2, y));
+    unsigned short count = 0;
+    while(*str != 0)
+    {
+        screen::Text::putchar(*str, color, x + count, y*2);
+        count++;
+        str++;
+    }
 }

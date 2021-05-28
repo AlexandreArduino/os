@@ -1,8 +1,10 @@
 #include "screen.h"
+#include "log.h"
 
 extern "C" void _start()
 {
     screen::clear();
-    screen::Text::print("Kernel loaded !", GREEN, 0, 0);
+    screen::log::print("Kernel loaded!");
+    screen::log::print("Cursor set!");
     while(1);
 }
