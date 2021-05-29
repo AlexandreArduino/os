@@ -14,5 +14,11 @@ namespace screen
     {
         extern unsigned short y;
         void print(char *str);
+        void add();
+    };
+    namespace exceptions
+    {
+        void error(char *str);
+        void success(char *str);
     };
 };
