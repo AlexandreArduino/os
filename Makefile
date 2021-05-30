@@ -20,7 +20,7 @@ boot:
 boot_bootloader:
 	qemu-system-x86_64 output/bootloader/bootloader
 depencies:
-	sudo apt-get install nasm gcc g++ mkisofs -y
+	sudo apt-get install nasm gcc g++ -y
 clear: output/
 	rm -Rf output
 update_from_github:
@@ -41,3 +41,8 @@ clink: output/bootsect
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
 cboot: output/os
 	qemu-system-x86_64 output/os
+push:
+	rm -Rf output/
+	git add *
+	git commit
+	git push
