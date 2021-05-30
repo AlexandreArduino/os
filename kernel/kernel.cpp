@@ -1,14 +1,10 @@
 #include "screen.h"
 #include "log.h"
-
-extern void SetSize();
-
+#include "gdt.h"
 extern "C" void _start()
 {
     screen::clear();
     screen::log::print("Kernel loaded!");
-    screen::log::print("Cursor set!");
-    screen::exceptions::error("Unable to found video driver!");
-    screen::exceptions::success("Driver memory found!");
+    GlobalDescriptorTable gdt;
     while(1);
 }

@@ -8,6 +8,7 @@ INPUT
     output/kernel/screen.o
     output/kernel/IO.o
     output/kernel/log.o
+    output/kernel/gdt.o
 )
 
 OUTPUT

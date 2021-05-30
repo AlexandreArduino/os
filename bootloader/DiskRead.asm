@@ -1,7 +1,7 @@
 ReadDisk:
 	mov ah, 0x02
 	mov bx, PROGRAM_SPACE
-	mov al, 7
+	mov al, 14
 	mov dl, [BOOT_DISK]
 	mov ch, 0x00
 	mov dh, 0x00
@@ -13,7 +13,7 @@ ReadDisk:
 BOOT_DISK:
 	db 0
 DiskReadErrorString:
-	db "Disk Read failed !", 13, 10, 0
+	db "Disk Read failed!", 13, 10, 0
 DiskReadFailed:
 	mov si, DiskReadErrorString
 	call printasm

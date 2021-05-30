@@ -22,14 +22,6 @@
 #define WHITE 15
 namespace screen
 {
-    /*extern unsigned int CursorPosition;
-    extern unsigned int CursorLinePosition;
-    void init();
-    void clear();
-    void putchar(char c, u16 color, u16 position);
-    void print(char *str, u16 color, u16 position, u16 _line);
-    void setCursorPosition(unsigned short position);*/
-
     void clear();
 
     namespace TextCursor
