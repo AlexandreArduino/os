@@ -15,3 +15,5 @@ You can find it in bootloader/. It has to :
     - enable paging
     - set up the CPU in long mode
     - load the main function of the kernel
+    
+ PS : The readme is not finished!
