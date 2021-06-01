@@ -1,7 +1,6 @@
 #include "log.h"
 #include "gdt.h"
 #include "types.h"
-
 GlobalDescriptorTable::GlobalDescriptorTable()
 : nullSegmentSelector(0, 0, 0), 
 unusedSegmentSelector(0, 0, 0),

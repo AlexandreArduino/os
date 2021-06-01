@@ -8,8 +8,12 @@ INPUT
     output/kernel/screen.o
     output/kernel/IO.o
     output/kernel/log.o
-    output/kernel/idt.o
     output/kernel/gdt.o
+    output/kernel/idt.o
+    output/kernel/lib.o
+    output/kernel/int.o
+    output/kernel/interrupts.o
+    output/kernel/pic.o
 )
 
 OUTPUT
