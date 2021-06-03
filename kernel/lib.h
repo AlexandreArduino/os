@@ -6,3 +6,5 @@ namespace KernelLib
     void cli();
     void sti();
 };
+
+void *memcpy(char *dst, char *src, int n);

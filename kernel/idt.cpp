@@ -16,13 +16,7 @@ void IDT::InitDescriptor(u16 Selector, u32 Offset, u16 Type, struct Descriptor* 
     descriptor->Offset_16_31 = (Offset & 0xFFFF0000);
     descriptor->Flags = Type;
 }
-void *memcpy(char *dst, char *src, int n)
-{
-	char *p = dst;
-	while (n--)
-		*dst++ = *src++;
-	return p;
-}
+
 void IDT::Init()
 {
     screen::log::print("Initializing IDT ...");

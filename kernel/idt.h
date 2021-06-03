@@ -1,6 +1,6 @@
 #pragma once
 #include "types.h"
-#define IDT_MEMLOC 0x800
+#define IDT_MEMLOC 0x3ff
 #define IDT_NUMDESC 0xFF
 #define INTGATE 0x8600
 namespace IDT

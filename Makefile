@@ -59,6 +59,8 @@ clink: output/bootsect
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
 cboot: output/os
 	qemu-system-x86_64 output/os
+cboot_infos: output/os
+	qemu-system-x86_64 output/os -d int -no-reboot -no-shutdown
 push:
 	rm -Rf output/
 	git add *

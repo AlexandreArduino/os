@@ -1,5 +1,7 @@
 #pragma once
 #include "types.h"
+#define GDTBASE 0x0
+#define GDTSIZE 0xFF
 class GlobalDescriptorTable
 {
 public:

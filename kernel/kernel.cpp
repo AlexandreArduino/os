@@ -12,6 +12,6 @@ extern "C" void _start()
     GlobalDescriptorTable gdt;
     IDT::Init();
     PIC::reset();
-    KernelLib::sti();
+    asm volatile("sti"::);
     while(1);
 }
