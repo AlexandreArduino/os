@@ -41,4 +41,9 @@ namespace screen
         void print(char *str, unsigned short color, unsigned short x, unsigned short y);
         unsigned short GetLocation(unsigned short x, unsigned short y);
     };
+
+    namespace Hexadecimal
+    {
+        void ToString(int value);
+    };
 };

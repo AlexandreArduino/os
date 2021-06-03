@@ -41,12 +41,7 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c kernel/screen.cpp -o output/kernel/screen.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/IO.cpp -o output/kernel/IO.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/log.cpp -o output/kernel/log.o
-	$(CCOMPILER) $(CFLAGS) -c kernel/gdt.cpp -o output/kernel/gdt.o
-	$(CCOMPILER) $(CFLAGS) -c kernel/idt.cpp -o output/kernel/idt.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/lib.cpp -o output/kernel/lib.o
-	$(ASMCOMPILER) $(ASMFLAGS) -o output/kernel/int.o kernel/interrupts.asm
-	$(CCOMPILER) $(CFLAGS) -c kernel/interrupts.cpp -o output/kernel/interrupts.o
-	$(CCOMPILER) $(CFLAGS) -c kernel/pic.cpp -o output/kernel/pic.o
 	#gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/kernel.cpp -o output/kernel/kernel.o 
 	#gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/screen.cpp -o output/kernel/screen.o
 	#gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c kernel/IO.cpp -o output/kernel/IO.o

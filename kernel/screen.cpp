@@ -85,3 +85,8 @@ void screen::Text::print(char *str, unsigned short color, unsigned short x, unsi
         str++;
     }
 }
+
+void screen::Hexadecimal::ToString(int value)
+{
+    
+}
