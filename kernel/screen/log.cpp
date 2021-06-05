@@ -1,5 +1,5 @@
 #include "log.h"
-#include "types.h"
+#include "../types.h"
 #include "screen.h"
 
 unsigned short screen::log::y = 0;

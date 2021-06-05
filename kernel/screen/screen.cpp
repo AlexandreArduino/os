@@ -1,6 +1,6 @@
 #include "screen.h"
-#include "types.h"
-#include "IO.h"
+#include "../types.h"
+#include "../hardware/IO.h"
 
 unsigned short screen::TextCursor::x = 0;
 unsigned short screen::TextCursor::y = 0;

@@ -5,10 +5,12 @@ ENTRY (_start)
 INPUT
 (
     output/kernel/kernel.o
-    output/kernel/screen.o
-    output/kernel/IO.o
-    output/kernel/log.o
-    output/kernel/lib.o
+    output/kernel/screen/screen.o
+    output/kernel/hardware/IO.o
+    output/kernel/screen/log.o
+    output/lib/integer.o
+    output/lib/math.o
+    output/lib/string.o
 )
 
 OUTPUT

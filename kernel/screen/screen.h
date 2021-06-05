@@ -1,5 +1,5 @@
 #pragma once
-#include "types.h"
+#include "../types.h"
 #define VIDEO_MEMORY 0xB8000
 #define SIZE_SCREEN 2000
 #define LENGTH_LINE 80
