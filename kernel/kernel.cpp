@@ -1,7 +1,4 @@
 #include "screen/log.h"
-#include "../lib/integer.h"
-#include "../lib/string.h"
-#include "../dev/scroll.h"
 void *__gxx_personality_v0;
 void *_Unwind_Resume;
 void itoa(int number, char *str, int base);
@@ -11,11 +8,6 @@ extern "C" void _start()
     screen::clear();
     screen::exceptions::success("Kernel loaded at 0x8600!");
     screen::log::print("Loading the whole kernel ...");
-    // char *str="";
-    // itoa(56, str, 10);
-    // screen::Text::scroll(1);
-    char *Buffer = "";
-    Dev::scroll::SaveLineBuffer(Buffer);
     while(1);
 }
 void itoa(int number, char *str, int base)
@@ -55,8 +47,6 @@ void itoa(int number, char *str, int base)
             {
                 sstr[2 - i] = str[i];
             }
-            // sstr[3] = '\0';
-            //screen::log::print(sstr);
         }
     }
 }

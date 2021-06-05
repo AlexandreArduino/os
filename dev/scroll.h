@@ -1,11 +1,11 @@
 #ifndef SCROLL_DEV_H
 #define SCROLL_DEV_H
-
+#include "../kernel/types.h"
 namespace Dev
 {
     namespace scroll
     {
-        void SaveLineBuffer(char *buffer);
+        void Scroll(u8 line);
     };
 };
 

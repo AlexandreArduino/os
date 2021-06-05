@@ -1,9 +1,11 @@
 #include "screen.h"
 #include "../types.h"
 #include "../hardware/IO.h"
+#include "log.h"
 
 unsigned short screen::TextCursor::x = 0;
 unsigned short screen::TextCursor::y = 0;
+unsigned short screen::TextCursor::location = 0;
 
 void screen::clear()
 {
@@ -13,6 +15,7 @@ void screen::clear()
         video = VIDEO_MEMORY + (char*)i;
         *video = ' ';
     }
+    screen::TextCursor::location = 0;
     screen::TextCursor::Refresh(0, 0);
 }
 
@@ -25,6 +28,7 @@ unsigned short screen::TextCursor::GetLocation(unsigned short x, unsigned short 
 
 void screen::TextCursor::SetPosition(unsigned short position)
 {
+    screen::TextCursor::location = position;
     IO::outb(0x3D4, 0x0F);
     IO::outb(0x3D5, (unsigned char)(position & 0xFF));
     IO::outb(0x3D4, 0x0E);
@@ -43,6 +47,9 @@ void screen::Text::putchar(char c, unsigned short color, unsigned short x, unsig
     char *colour = (char*)(VIDEO_MEMORY + screen::Text::GetLocation(x*2, y) + 1);
     *colour = color;
     screen::TextCursor::SetPosition((int)screen::Text::GetLocation(x*2, y)/2 + 1);
+    screen::TextCursor::x = x;
+    screen::TextCursor::y = y;
+    screen::TextCursor::location += 1;
 }
 
 void screen::Text::putchar(char c, unsigned short color, unsigned short position)
@@ -52,6 +59,7 @@ void screen::Text::putchar(char c, unsigned short color, unsigned short position
     char *colour = (char*)(VIDEO_MEMORY + position + 1);
     *colour = color;
     screen::TextCursor::SetPosition((int)position/2 + 1);
+    screen::TextCursor::location = position;
 }
 
 unsigned short screen::Text::GetLocation(unsigned short x, unsigned short y)
@@ -93,24 +101,15 @@ void screen::Hexadecimal::ToString(int value)
 
 void screen::Text::scroll(u8 NumberLines)
 {
-    char *LastLineBuffer[LENGTH_LINE*2];
-    /*for(int i = 0;i < LENGTH_LINE*2;i++)
+    int last_location = screen::TextCursor::location;
+    char *cursor;
+    char *destination;
+    for(int i = 0; i < SIZE_SCREEN - NumberLines*LENGTH_LINE;i++)
     {
-        LastLineBuffer[i] = (char*)(VIDEO_MEMORY + LENGTH_LINE*2 + i);
-    }*/
-    screen::Text::copyLine(LastLineBuffer[0], 2);
-    /*char *video = (char*)(VIDEO_MEMORY + LENGTH_LINE*4);
-    *video = *LastLineBuffer[0];*/
-    char *video;
-    for(int j = 0;j < LENGTH_LINE*2;j++)
-    {
-        video = (char*)(VIDEO_MEMORY + LENGTH_LINE*4 + j);
-        *video = *LastLineBuffer[j];
+        cursor = (char*)(VIDEO_MEMORY + LENGTH_LINE*NumberLines*2 + i);
+        destination = (char*)(VIDEO_MEMORY + i);
+        *destination = *cursor;
     }
-}
-
-void screen::Text::copyLine(char *buffer, u8 Line)
-{
-    for(int i = 0;i < LENGTH_LINE*Line;i++)
-        buffer[i] = (char*)(VIDEO_MEMORY + LENGTH_LINE*Line + i);
+    screen::TextCursor::SetPosition(last_location - NumberLines*LENGTH_LINE - 1);
+    screen::log::y -= NumberLines;
 }
