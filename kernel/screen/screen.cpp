@@ -90,3 +90,27 @@ void screen::Hexadecimal::ToString(int value)
 {
     
 }
+
+void screen::Text::scroll(u8 NumberLines)
+{
+    char *LastLineBuffer[LENGTH_LINE*2];
+    /*for(int i = 0;i < LENGTH_LINE*2;i++)
+    {
+        LastLineBuffer[i] = (char*)(VIDEO_MEMORY + LENGTH_LINE*2 + i);
+    }*/
+    screen::Text::copyLine(LastLineBuffer[0], 2);
+    /*char *video = (char*)(VIDEO_MEMORY + LENGTH_LINE*4);
+    *video = *LastLineBuffer[0];*/
+    char *video;
+    for(int j = 0;j < LENGTH_LINE*2;j++)
+    {
+        video = (char*)(VIDEO_MEMORY + LENGTH_LINE*4 + j);
+        *video = *LastLineBuffer[j];
+    }
+}
+
+void screen::Text::copyLine(char *buffer, u8 Line)
+{
+    for(int i = 0;i < LENGTH_LINE*Line;i++)
+        buffer[i] = (char*)(VIDEO_MEMORY + LENGTH_LINE*Line + i);
+}

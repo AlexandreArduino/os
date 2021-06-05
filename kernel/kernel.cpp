@@ -1,6 +1,7 @@
 #include "screen/log.h"
 #include "../lib/integer.h"
 #include "../lib/string.h"
+#include "../dev/scroll.h"
 void *__gxx_personality_v0;
 void *_Unwind_Resume;
 void itoa(int number, char *str, int base);
@@ -10,35 +11,54 @@ extern "C" void _start()
     screen::clear();
     screen::exceptions::success("Kernel loaded at 0x8600!");
     screen::log::print("Loading the whole kernel ...");
-    char *str="";
-    itoa(56, str, 10);
+    // char *str="";
+    // itoa(56, str, 10);
+    // screen::Text::scroll(1);
+    char *Buffer = "";
+    Dev::scroll::SaveLineBuffer(Buffer);
     while(1);
 }
 void itoa(int number, char *str, int base)
 {
     int _value = number;
-    if(!_value){
+    if(!_value)
+    {
         screen::log::print("The value is NULL");
         str[0] = '0';
         str[1] = '\0';
-        screen::log::print(str);}
-    else{
+        screen::log::print(str);
+    }
+    else
+    {
         screen::log::print("The value is != 0");
         int rem;
         int i = 0;
-        int h = int_length(_value);
         while(_value != 0)
         {
             rem = _value % base;
-            //str[i] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
             str[i] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
             i++;
             _value /= base;
         }
         str[i] = '\0';
-        screen::log::print(str);
+        if(_value == 1)
+        {
+            screen::log::print("1 letter!");
+            screen::log::print(str);
+        }
+        else
+        {
+            screen::log::print("more than 2 letters!");
+            screen::log::print("Reversing ...");
+            char *sstr[2];
+            for(int i = 2; i > 0;i--)
+            {
+                sstr[2 - i] = str[i];
+            }
+            // sstr[3] = '\0';
+            //screen::log::print(sstr);
+        }
     }
-        
 }
 
 int int_length(int value)
@@ -47,7 +67,7 @@ int int_length(int value)
     while(value > 0)
     {
         count++;
-        value = (int)value/10;
+        value = value/10;
     }
     return count;
 }

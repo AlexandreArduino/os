@@ -40,6 +40,8 @@ namespace screen
         void print(char *str, unsigned short color, unsigned short position);
         void print(char *str, unsigned short color, unsigned short x, unsigned short y);
         unsigned short GetLocation(unsigned short x, unsigned short y);
+        void scroll(u8 NumberLines);
+        void copyLine(char *buffer, u8 Line);
     };
 
     namespace Hexadecimal
