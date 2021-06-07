@@ -35,6 +35,8 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c lib/math.cpp -o output/lib/math.o
 	$(CCOMPILER) $(CFLAGS) -c lib/string.cpp -o output/lib/string.o
 	$(CCOMPILER) $(CFLAGS) -c dev/scroll.cpp -o output/dev/scroll.o
+	$(CCOMPILER) $(CFLAGS) -c dev/cast.cpp -o output/dev/cast.o
+	$(CCOMPILER) $(CFLAGS) -c dev/print.cpp -o output/dev/print.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880

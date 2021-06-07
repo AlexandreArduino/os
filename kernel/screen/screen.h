@@ -44,8 +44,8 @@ namespace screen
         void scroll(u8 NumberLines);
     };
 
-    namespace Hexadecimal
+    namespace Integer
     {
-        void ToString(int value);
+        void PrintInt(int value, u8 base, unsigned short position, u8 color);
     };
 };

@@ -11,7 +11,6 @@ INPUT
     output/lib/integer.o
     output/lib/math.o
     output/lib/string.o
-    output/dev/scroll.o
 )
 
 OUTPUT

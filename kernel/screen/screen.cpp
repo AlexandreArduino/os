@@ -2,6 +2,7 @@
 #include "../types.h"
 #include "../hardware/IO.h"
 #include "log.h"
+#include "../../lib/integer.h"
 
 unsigned short screen::TextCursor::x = 0;
 unsigned short screen::TextCursor::y = 0;
@@ -94,11 +95,6 @@ void screen::Text::print(char *str, unsigned short color, unsigned short x, unsi
     }
 }
 
-void screen::Hexadecimal::ToString(int value)
-{
-    
-}
-
 void screen::Text::scroll(u8 NumberLines)
 {
     int last_location = screen::TextCursor::location;
@@ -112,4 +108,9 @@ void screen::Text::scroll(u8 NumberLines)
     }
     screen::TextCursor::SetPosition(last_location - NumberLines*LENGTH_LINE - 1);
     screen::log::y -= NumberLines;
+}
+
+void screen::Integer::PrintInt(int value, u8 base, unsigned short position, u8 color)
+{
+    lib::integer::print(value, base, position, color);
 }

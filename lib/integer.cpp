@@ -1,35 +1,81 @@
 #include "integer.h"
 #include "../kernel/screen/log.h"
-lib::Integer::Integer(int value)
+#include "../kernel/types.h"
+#include "../kernel/screen/screen.h"
+/*lib::Integer::Integer(int value, u8 base)
 {
     _value = value;
+    _base = base;
+    screen::log::print("New integer variable created!");
 }
 
 lib::Integer::~Integer(){}
 
-void lib::Integer::ToString()
+u8 lib::Integer::Length()
 {
     int __value = _value;
-    char text[20];
-    int i = 0;
-    int c = 0;
-    if(!__value)
-        screen::log::print("0");
-    else{
-        if(__value < 0)
-        {
-            __value = -__value;
-        }
-        while(__value >= 100)
-            __value -= 100;
-            c++;
-        text[i++] = c + 48;
-        c = 0;
-        while(__value >= 10)
-            __value -= 10;
-            c++;
-        text[i++] = c + 48;
-        text[i] = __value + 48;
-        screen::log::print("pl");
+    int count = 0;
+    while(__value > 0)
+    {
+        count++;
+        __value = (int)__value / _base;
     }
+}
+
+void lib::Integer::ToString()
+{
+    int length = lib::Integer::Length();
+    lib::Integer::BufferToString[length];
+    int count = 0;
+    int __value = _value;
+    while(__value > 0)
+    {
+        char c = __value % _base;
+        c += 48;
+        lib::Integer::BufferToString[length - count] = c;
+        __value = (int)__value / 10;
+        count++;
+    }
+}
+
+void lib::Integer::PrintString(unsigned short position)
+{
+    screen::Text::PrintArrayReversedWithoutNullTerminated(lib::Integer::BufferToString, lib::Integer::Length(), position);
+}*/
+
+void lib::integer::print(int value, u8 base, unsigned short position, u8 color)
+{
+    screen::log::print("Printing integer value ...");
+    int length = lib::integer::length(value, base);
+    char Buffer[length + 1];
+    Buffer[0] = '0';
+    screen::log::print("Setting buffer ...");
+    char c;
+    int count = 0;
+    if(position % 2)
+        position++;
+    while(value)
+    {
+        c = value % base;
+        c += 48;
+        Buffer[length - count + 1] = c;
+        value = (int)value / base;
+        count++;
+    }
+    for(int i = length + 1; i > 1;i--)
+    {
+        screen::Text::putchar(Buffer[i], color, position + i*2 - 4);
+    }
+}
+
+unsigned short lib::integer::length(int value, u8 base)
+{
+    screen::log::print("Getting length of integer ...");
+    int count = 0;
+    while(value)
+    {
+        value /= base;
+        count++;
+    }
+    return count;
 }
