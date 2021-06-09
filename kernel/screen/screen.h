@@ -47,5 +47,6 @@ namespace screen
     namespace Integer
     {
         void PrintInt(int value, u8 base, unsigned short position, u8 color);
+        void PrintInt(int value, u8 base, unsigned short x, unsigned short y, u8 color);
     };
 };

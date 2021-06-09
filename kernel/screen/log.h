@@ -13,6 +13,8 @@ namespace screen
     namespace log
     {
         extern unsigned short y;
+        extern unsigned short x_offset;
+        void println(char *str);
         void print(char *str);
         void add();
     };

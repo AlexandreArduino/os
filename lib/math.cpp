@@ -1,4 +1,4 @@
-#include "math.h"
+#include "../kernel/kernel.h"
 
 int lib::math::pow(int value, int exponent)
 {

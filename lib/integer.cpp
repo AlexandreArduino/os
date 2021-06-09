@@ -1,80 +1,65 @@
-#include "integer.h"
-#include "../kernel/screen/log.h"
-#include "../kernel/types.h"
-#include "../kernel/screen/screen.h"
-/*lib::Integer::Integer(int value, u8 base)
-{
-    _value = value;
-    _base = base;
-    screen::log::print("New integer variable created!");
-}
+#include "../kernel/kernel.h"
 
-lib::Integer::~Integer(){}
-
-u8 lib::Integer::Length()
+void lib::integer::print(int value, unsigned short position, u8 color)
 {
-    int __value = _value;
-    int count = 0;
-    while(__value > 0)
-    {
-        count++;
-        __value = (int)__value / _base;
-    }
-}
-
-void lib::Integer::ToString()
-{
-    int length = lib::Integer::Length();
-    lib::Integer::BufferToString[length];
-    int count = 0;
-    int __value = _value;
-    while(__value > 0)
-    {
-        char c = __value % _base;
-        c += 48;
-        lib::Integer::BufferToString[length - count] = c;
-        __value = (int)__value / 10;
-        count++;
-    }
-}
-
-void lib::Integer::PrintString(unsigned short position)
-{
-    screen::Text::PrintArrayReversedWithoutNullTerminated(lib::Integer::BufferToString, lib::Integer::Length(), position);
-}*/
-
-void lib::integer::print(int value, u8 base, unsigned short position, u8 color)
-{
-    screen::log::print("Printing integer value ...");
-    int length = lib::integer::length(value, base);
+    // screen::log::print("Printing integer value ...");
+    int length = lib::integer::length(value);
     char Buffer[length + 1];
     Buffer[0] = '0';
-    screen::log::print("Setting buffer ...");
+    // screen::log::print("Setting buffer ...");
     char c;
     int count = 0;
     if(position % 2)
         position++;
     while(value)
     {
-        c = value % base;
+        c = value % DEC_BASE;
         c += 48;
         Buffer[length - count + 1] = c;
-        value = (int)value / base;
+        value = (int)value / DEC_BASE;
         count++;
     }
     for(int i = length + 1; i > 1;i--)
     {
         screen::Text::putchar(Buffer[i], color, position + i*2 - 4);
     }
+    // screen::TextCursor::SetPosition(position + length);
 }
 
-unsigned short lib::integer::length(int value, u8 base)
+void lib::integer::print(int value, unsigned short x, unsigned short y, u8 color)
 {
-    screen::log::print("Getting length of integer ...");
+    lib::integer::print(value, screen::TextCursor::GetLocation(x, y), color);
+}
+
+unsigned short lib::integer::length(int value)
+{
+    // screen::log::print("Getting length of integer ...");
     int count = 0;
     while(value)
     {
-        value /= base;
+        value /= DEC_BASE;
+        count++;
+    }
+    return count;
+}
+
+void lib::integer::println(int value, unsigned short position, u8 color)
+{
+    
+}
+
+void lib::integer::println(int value, unsigned short x, unsigned short y, u8 color)
+{
+
+}
+
+
+unsigned short lib::hexadecimal::length(int value)
+{
+    unsigned short count = 0;
+    while(value > 0)
+    {
+        value = (int)value / HEXA_BASE;
         count++;
     }
     return count;

@@ -1,18 +1,19 @@
-#include "screen/log.h"
-#include "../lib/integer.h"
+#include "kernel.h"
 void *__gxx_personality_v0;
 void *_Unwind_Resume;
-using namespace lib;
+using namespace kernel;
 extern "C" void _start()
 {
-    screen::clear();
+    /*screen::clear();
     screen::exceptions::success("Kernel loaded at 0x8600!");
-    screen::log::print("Loading the whole kernel ...");
-    screen::log::print("---------------------------------------");
-    screen::log::print("Text at line 4 before scrolling the screen!");
-    screen::Text::scroll(2);
-    screen::log::print("Text at line 3 after scrolling the screen!");
-    screen::Integer::PrintInt(123456, 10, 126, CYAN);
-    screen::log::print("The kernel is able to print integers by converting them!");
+    screen::log::println("Loading the whole kernel ...");
+    screen::log::println("Here you will find the real cursor position");
+    lib::integer::print(screen::TextCursor::location, PrintNumberAutomaticPosition(), YELLOW);
+    screen::log::println("It works!");*/
+    clear();
+    println("Kernel loaded at 0x8600!");
+    println("Loading the whole kernel ...");
+    print("Current cursor position : ");
+    PrintIntLn(screen::TextCursor::location);
     while(1);
 }

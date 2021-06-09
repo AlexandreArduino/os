@@ -1,9 +1,4 @@
-#include "screen.h"
-#include "../types.h"
-#include "../hardware/IO.h"
-#include "log.h"
-#include "../../lib/integer.h"
-
+#include "../kernel.h"
 unsigned short screen::TextCursor::x = 0;
 unsigned short screen::TextCursor::y = 0;
 unsigned short screen::TextCursor::location = 0;
@@ -38,6 +33,8 @@ void screen::TextCursor::SetPosition(unsigned short position)
 
 void screen::TextCursor::Refresh(unsigned short x, unsigned short y)
 {
+    screen::TextCursor::x = x;
+    screen::TextCursor::y = y;
     screen::TextCursor::SetPosition(screen::TextCursor::GetLocation(x, y));
 }
 
@@ -48,8 +45,6 @@ void screen::Text::putchar(char c, unsigned short color, unsigned short x, unsig
     char *colour = (char*)(VIDEO_MEMORY + screen::Text::GetLocation(x*2, y) + 1);
     *colour = color;
     screen::TextCursor::SetPosition((int)screen::Text::GetLocation(x*2, y)/2 + 1);
-    screen::TextCursor::x = x;
-    screen::TextCursor::y = y;
     screen::TextCursor::location += 1;
 }
 
@@ -113,4 +108,9 @@ void screen::Text::scroll(u8 NumberLines)
 void screen::Integer::PrintInt(int value, u8 base, unsigned short position, u8 color)
 {
     lib::integer::print(value, base, position, color);
+}
+
+void screen::Integer::PrintInt(int value, u8 base, unsigned short x, unsigned short y, u8 color)
+{
+    screen::Integer::PrintInt(value, base, screen::TextCursor::GetLocation(x, y), color);
 }
