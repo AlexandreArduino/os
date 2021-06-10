@@ -27,5 +27,5 @@ void kernel::scroll(u8 n)
 
 void kernel::PrintIntLn(int value)
 {
-    lib::integer::print(value, PrintNumberAutomaticPosition(), LOG_COLOR);   
+    lib::integer::print(value, PrintNumberAutomaticPosition(), LOG_COLOR);
 }

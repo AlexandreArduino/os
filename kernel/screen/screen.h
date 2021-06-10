@@ -32,7 +32,8 @@ namespace screen
         unsigned short GetLocation(unsigned short x, unsigned short y);
         void SetPosition(unsigned short position);
         void Refresh(unsigned short x, unsigned short y);
-        inline void AddValueCursor(unsigned short value);
+        void RefreshWithLocation();
+        void AddValueCursor(unsigned short value);
     };
     namespace Text
     {

@@ -1,5 +1,5 @@
 CCOMPILER = gcc
-CFLAGS = -Wall -O0 -fno-stack-protector -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -fpermissive
+CFLAGS =  -w -Wall -O0 -fno-stack-protector -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -fpermissive
 LDFILE = link.ld
 MAIN_ROUTINE = clean cbootloader ckernel clink cboot
 ASMCOMPILER = nasm

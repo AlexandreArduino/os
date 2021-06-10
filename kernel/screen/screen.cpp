@@ -38,6 +38,11 @@ void screen::TextCursor::Refresh(unsigned short x, unsigned short y)
     screen::TextCursor::SetPosition(screen::TextCursor::GetLocation(x, y));
 }
 
+void screen::TextCursor::RefreshWithLocation()
+{
+    screen::TextCursor::SetPosition(screen::TextCursor::location);
+}
+
 void screen::Text::putchar(char c, unsigned short color, unsigned short x, unsigned short y)
 {
     char *video = (char*)(VIDEO_MEMORY + screen::Text::GetLocation(x*2, y));
@@ -63,7 +68,7 @@ unsigned short screen::Text::GetLocation(unsigned short x, unsigned short y)
     return x + y * LENGTH_LINE;
 }
 
-inline void screen::TextCursor::AddValueCursor(unsigned short value)
+void screen::TextCursor::AddValueCursor(unsigned short value)
 {
     screen::TextCursor::Refresh(screen::TextCursor::x + value, screen::TextCursor::y);
 }

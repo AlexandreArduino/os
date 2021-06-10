@@ -14,6 +14,7 @@ extern "C" void _start()
     println("Kernel loaded at 0x8600!");
     println("Loading the whole kernel ...");
     print("Current cursor position : ");
-    PrintIntLn(screen::TextCursor::location);
+    // PrintIntLn(screen::TextCursor::location);
+    PrintIntLn(123456789);
     while(1);
 }
