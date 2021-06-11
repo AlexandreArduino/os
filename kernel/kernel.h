@@ -7,6 +7,7 @@
 #include "../lib/integer.h"
 #include "../lib/string.h"
 #include "../lib/math.h"
+#include "../dev/screen.h"
 namespace kernel
 {
     unsigned short PrintNumberAutomaticPosition();

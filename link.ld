@@ -12,6 +12,7 @@ INPUT
     output/lib/math.o
     output/lib/string.o
     output/kernel/utils.o
+    output/dev/screen.o
 )
 
 OUTPUT

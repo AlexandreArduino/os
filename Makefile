@@ -38,6 +38,7 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c dev/cast.cpp -o output/dev/cast.o
 	$(CCOMPILER) $(CFLAGS) -c dev/print.cpp -o output/dev/print.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/utils.cpp -o output/kernel/utils.o
+	$(CCOMPILER) $(CFLAGS) -c dev/screen.cpp -o output/dev/screen.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
@@ -50,33 +51,7 @@ cboot: output/os
 cboot_infos: output/os
 	qemu-system-x86_64 output/os -d int -no-reboot -no-shutdown
 cross-compiler:
-	sudo apt update
-	sudo apt upgrade
-	sudo apt install build-essential -y
-	sudo apt install bison -y
-	sudo apt install flex -y
-	sudo apt install libgmp3-dev -y
-	sudo apt install libmpc-dev -y
-	sudo apt install libmpfr-dev -y
-	sudo apt install texinfo -y
-	export PREFIX="/usr/local/x86_64elfgcc"
-	export TARGET=x86_64-elf
-	export PATH="$PREFIX/bin:$PATH"
-	mkdir /tmp/src
-	cd /tmp/src
-	curl -O http://ftp.gnu.org/gnu/binutils/binutils-2.35.1.tar.gz
-	tar xf binutils-2.35.1.tar.gz
-	mkdir binutils-build
-	cd binutils-build
-	../binutils-2.35.1/configure --target=$TARGET --enable-interwork --enable-multilib --disable-nls --disable-werror --prefix=$PREFIX 2>&1 | tee configure.log
-	sudo make all install 2>&1 | tee make.log
-	cd /tmp/src
-	curl -O https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
-	tar xf gcc-10.2.0.tar.gz
-	mkdir gcc-build
-	cd gcc-build
-	../gcc-10.2.0/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --disable-libssp --enable-languages=c++ --without-headers
-	sudo make all-gcc
-	sudo make all-target-libgcc
-	sudo make install-gcc
-	sudo make install-target-libgcc
+	mkdir cross-compiler
+	curl -O http://ftp.gnu.org/gnu/binutils/binutils-2.36.tar.gz
+	tar xf binutils-2.36.tar.gz
+	binutils-2.36/./

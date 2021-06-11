@@ -11,10 +11,12 @@ extern "C" void _start()
     lib::integer::print(screen::TextCursor::location, PrintNumberAutomaticPosition(), YELLOW);
     screen::log::println("It works!");*/
     clear();
-    println("Kernel loaded at 0x8600!");
+    /*println("Kernel loaded at 0x8600!");
     println("Loading the whole kernel ...");
     print("Current cursor position : ");
     // PrintIntLn(screen::TextCursor::location);
-    PrintIntLn(123456789);
+    PrintIntLn(123456789);*/
+    Dev::Cursor cursor(-1);
+    //cursor.AddValueCursor(-12);
     while(1);
 }
