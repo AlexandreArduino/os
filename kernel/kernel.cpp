@@ -16,7 +16,6 @@ extern "C" void _start()
     print("Current cursor position : ");
     // PrintIntLn(screen::TextCursor::location);
     PrintIntLn(123456789);*/
-    Dev::Cursor cursor(-1);
-    //cursor.AddValueCursor(-12);
+    Dev::Cursor cursor(1560320);
     while(1);
 }
