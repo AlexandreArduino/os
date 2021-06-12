@@ -15,5 +15,13 @@ You can find it in bootloader/. It has to :
     - enable paging
     - set up the CPU in long mode
     - load the main function of the kernel
+
+# II) Kernel
+
+The kernel is the brain of the Operating System. Here, it is written in C/C++/ASM. It has do to a lot of things and it main directory in kernel/.
+
+# III) Dev
+
+The dev/ directory is just here to test class, functions in dev.
     
  PS : The readme is not finished!
