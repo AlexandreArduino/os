@@ -12,8 +12,7 @@ INPUT
     output/lib/math.o
     output/lib/string.o
     output/kernel/utils.o
-    output/dev/cursor.o
-    output/dev/TextCursor.o
+    output/kernel/screen/TextCursor.o
 )
 
 OUTPUT

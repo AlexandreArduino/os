@@ -38,8 +38,7 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c dev/cast.cpp -o output/dev/cast.o
 	$(CCOMPILER) $(CFLAGS) -c dev/print.cpp -o output/dev/print.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/utils.cpp -o output/kernel/utils.o
-	$(CCOMPILER) $(CFLAGS) -c dev/cursor.cpp -o output/dev/cursor.o
-	$(CCOMPILER) $(CFLAGS) -c dev/TextCursor.cpp -o output/dev/TextCursor.o
+	$(CCOMPILER) $(CFLAGS) -c kernel/screen/TextCursor.cpp -o output/kernel/screen/TextCursor.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
@@ -82,3 +81,8 @@ cross-compiler:
 	sudo make all-target-libgcc
 	sudo make install-gcc
 	sudo make install-target-libgcc
+binutils:
+	mkdir binutils-build
+	curl -O http://ftp.gnu.org/gnu/binutils/binutils-2.35.1.tar.gz
+	tar xf binutils-2.35.1.tar.gz
+	
