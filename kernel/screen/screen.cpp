@@ -15,33 +15,33 @@ void screen::clear()
     screen::TextCursor::Refresh(0, 0);
 }
 
-unsigned short screen::TextCursor::GetLocation(unsigned short x, unsigned short y)
+/*unsigned short screen::TextCursor::GetLocation(unsigned short x, unsigned short y)
 {
     if(screen::TextCursor::x != x)  screen::TextCursor::x = x;
     if(screen::TextCursor::y != y)  screen::TextCursor::y = y;
     return x + y * LENGTH_LINE;
-}
+}*/
 
-void screen::TextCursor::SetPosition(unsigned short position)
+/*void screen::TextCursor::SetPosition(unsigned short position)
 {
     screen::TextCursor::location = position;
     IO::outb(0x3D4, 0x0F);
     IO::outb(0x3D5, (unsigned char)(position & 0xFF));
     IO::outb(0x3D4, 0x0E);
     IO::outb(0x3D5, (unsigned char)((position >> 8) & 0xFF));
-}
+}*/
 
-void screen::TextCursor::Refresh(unsigned short x, unsigned short y)
+/*void screen::TextCursor::Refresh(unsigned short x, unsigned short y)
 {
     screen::TextCursor::x = x;
     screen::TextCursor::y = y;
     screen::TextCursor::SetPosition(screen::TextCursor::GetLocation(x, y));
-}
+}*/
 
-void screen::TextCursor::RefreshWithLocation()
+/*void screen::TextCursor::RefreshWithLocation()
 {
     screen::TextCursor::SetPosition(screen::TextCursor::location);
-}
+}*/
 
 void screen::Text::putchar(char c, unsigned short color, unsigned short x, unsigned short y)
 {
@@ -68,10 +68,10 @@ unsigned short screen::Text::GetLocation(unsigned short x, unsigned short y)
     return x + y * LENGTH_LINE;
 }
 
-void screen::TextCursor::AddValueCursor(unsigned short value)
+/*void screen::TextCursor::AddValueCursor(unsigned short value)
 {
     screen::TextCursor::Refresh(screen::TextCursor::x + value, screen::TextCursor::y);
-}
+}*/
 
 void screen::Text::print(char *str, unsigned short color, unsigned short position)
 {

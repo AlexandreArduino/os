@@ -16,6 +16,6 @@ extern "C" void _start()
     print("Current cursor position : ");
     // PrintIntLn(screen::TextCursor::location);
     PrintIntLn(123456789);*/
-    Dev::TextCursor cursor(0, 48000);
+    screen::TextCursor cursor(0, 48000);
     while(1);
 }

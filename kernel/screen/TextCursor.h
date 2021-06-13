@@ -1,7 +1,7 @@
 #ifndef __DEV_TEXTCURSOR_H
 #define __DEV_TEXTCURSOR_H
 
-namespace Dev
+namespace screen
 {
     class TextCursor
     {
