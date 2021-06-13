@@ -8,7 +8,7 @@
 #include "../lib/string.h"
 #include "../lib/math.h"
 #include "../dev/cursor.h"
-#include "../kernel/screen/TextCursor.h"
+//#include "../kernel/screen/TextCursor.h"
 namespace kernel
 {
     unsigned short PrintNumberAutomaticPosition();
