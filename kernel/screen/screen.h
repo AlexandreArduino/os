@@ -24,7 +24,7 @@ namespace screen
 {
     void clear();
 
-   /* namespace TextCursor
+    namespace TextCursor
     {
         extern unsigned short x;
         extern unsigned short y;
@@ -34,7 +34,7 @@ namespace screen
         void Refresh(unsigned short x, unsigned short y);
         void RefreshWithLocation();
         void AddValueCursor(unsigned short value);
-    };*/
+    };
     namespace Text
     {
         void putchar(char c, unsigned short color, unsigned short x, unsigned short y);
