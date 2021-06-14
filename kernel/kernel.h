@@ -19,6 +19,7 @@ namespace kernel
     void println(char *str);
     void print(char *str);
     void scroll(u8 n);
+    void PrintInt(int value);
     void PrintIntLn(int value);
 };
 #endif

@@ -25,7 +25,12 @@ void kernel::scroll(u8 n)
     Dev::Screen::scroll(n);
 }
 
+void kernel::PrintInt(int value)
+{
+    Dev::Integer::print(value, DEFAULT_COLOR_PRINT);
+}
+
 void kernel::PrintIntLn(int value)
 {
-    lib::integer::print(value, PrintNumberAutomaticPosition(), LOG_COLOR);
+    Dev::Integer::println(value, DEFAULT_COLOR_PRINT);
 }

@@ -75,7 +75,7 @@ void Dev::Screen::scroll(u8 NumberLines)
         destination = (char*)(VIDEO_MEMORY + i);
         *destination = *current;
     }
-    cursor->SetLocation(last_x, last_y - NumberLines);
+    cursor->SetLocation(cursor->GetX(), cursor->GetY() - NumberLines);
 }
 
 void Dev::Screen::clear()

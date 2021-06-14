@@ -8,7 +8,7 @@ ASMFLAGS = -f elf64
 ASMFLAGS_BOOTLOADER = -f bin
 all: $(MAIN_ROUTINE)
 
-clean: output/
+clean:
 	clear
 	rm -Rf output/
 	mkdir output/

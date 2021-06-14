@@ -9,5 +9,7 @@ extern "C" void _start()
     TextCursor MainTextCursor(0);
     Dev::Screen::init(MainTextCursor);
     Dev::Screen::clear();
+    print("Kernel loaded at ");
+    PrintIntLn(-1238);
     while(1);
 }
