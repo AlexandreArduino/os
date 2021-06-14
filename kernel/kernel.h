@@ -10,6 +10,8 @@
 // #include "../dev/cursor.h"
 #include "screen/TextCursor.h"
 #include "../dev/screen.h"
+#include "../dev/integer.h"
+#define DEFAULT_COLOR_PRINT GRAY
 namespace kernel
 {
     unsigned short PrintNumberAutomaticPosition();

@@ -5,19 +5,12 @@
 * To access to cursor object : Dev::Screen::cursor->function;
 */
 
-Dev::Screen::Screen(int CursorLocation)
+TextCursor *Dev::Screen::cursor;
+
+void Dev::Screen::init(TextCursor _cursor)
 {
-    TextCursor _cursor(CursorLocation);
     Dev::Screen::cursor = &_cursor;
-    Dev::Screen::print("Hello World!", YELLOW);
-    Dev::Screen::println("Hi, everyone!", GREEN);
-    Dev::Screen::print("Hello World!", 5, BLUE);
-    Dev::Screen::println("Test of function", 250, WHITE);
-    Dev::Screen::scroll(2);
 }
-
-Dev::Screen::~Screen(){}
-
 void Dev::Screen::putchar(char c, unsigned int position, u8 color)
 {
     char *video = (char*)(VIDEO_MEMORY + position*2);
@@ -83,4 +76,15 @@ void Dev::Screen::scroll(u8 NumberLines)
         *destination = *current;
     }
     cursor->SetLocation(last_x, last_y - NumberLines);
+}
+
+void Dev::Screen::clear()
+{
+    char *video;
+    for(unsigned short i = 0; i < SIZE_SCREEN*2; i+=2)
+    {
+        video = VIDEO_MEMORY + (char*)i;
+        *video = ' ';
+    }
+    cursor->SetLocation(0);
 }
