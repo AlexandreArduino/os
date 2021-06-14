@@ -1,4 +1,3 @@
-#include "Textcursor.h"
 #include "../kernel.h"
 
 TextCursor::TextCursor(int location)

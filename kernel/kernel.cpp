@@ -5,6 +5,6 @@ using namespace kernel;
 extern "C" void _start()
 {
     clear();
-    TextCursor cursor(5);
+    Dev::Screen::Screen(0);
     while(1);
 }

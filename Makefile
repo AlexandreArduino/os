@@ -1,5 +1,6 @@
 CCOMPILER = gcc
 CFLAGS =  -w -Wall -O0 -fno-stack-protector -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -fpermissive
+COMPILE_LINE = $(CCOMPILER) $(CFLAGS)
 LDFILE = link.ld
 MAIN_ROUTINE = clean cbootloader ckernel clink cboot
 ASMCOMPILER = nasm
@@ -39,7 +40,8 @@ ckernel: kernel/kernel.cpp
 	#$(CCOMPILER) $(CFLAGS) -c dev/print.cpp -o output/dev/print.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/utils.cpp -o output/kernel/utils.o
 	#$(CCOMPILER) $(CFLAGS) -c dev/cursor.cpp -o output/dev/cursor.o
-	$(CCOMPILER) $(CFLAGS) -c kernel/screen/Textcursor.cpp -o output/kernel/screen/TextCursor.o
+	$(CCOMPILER) $(CFLAGS) -c kernel/screen/TextCursor.cpp -o output/kernel/screen/TextCursor.o
+	$(COMPILE_LINE) -c dev/screen.cpp -o output/dev/screen.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880
