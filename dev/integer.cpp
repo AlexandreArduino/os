@@ -5,9 +5,8 @@ void Dev::Integer::print(int value, u8 color)
 {
     bool IsNeg = false;
     if(value < 0)
-    {
         IsNeg = true;
-    }
+        value = -value;
     unsigned short length = Dev::Integer::length(value);
     char Buffer[length + 1];
     Buffer[0] = '0';
@@ -22,9 +21,7 @@ void Dev::Integer::print(int value, u8 color)
         count++;
     }
     if(IsNeg)
-    {
         Dev::Screen::putchar('-', color);
-    }
     for(int i = 1; i < length + 1;i++)
     {
         Dev::Screen::putchar(Buffer[i], color);
