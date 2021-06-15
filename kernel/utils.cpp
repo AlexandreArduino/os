@@ -34,3 +34,13 @@ void kernel::PrintIntLn(int value)
 {
     Dev::Integer::println(value, DEFAULT_COLOR_PRINT);
 }
+
+void kernel::PrintHex(int value)
+{
+    Dev::Hexadecimal::print(value, DEFAULT_COLOR_PRINT);
+}
+
+void kernel::PrintHexLn(int value)
+{
+    Dev::Hexadecimal::println(value, DEFAULT_COLOR_PRINT);
+}

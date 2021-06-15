@@ -10,6 +10,7 @@ extern "C" void _start()
     Dev::Screen::init(MainTextCursor);
     Dev::Screen::clear();
     print("Kernel loaded at ");
-    PrintIntLn(-1238);
+    PrintHex(KERNEL_SPACE);
+    println("!");
     while(1);
 }
