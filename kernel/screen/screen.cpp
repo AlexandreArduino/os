@@ -1,6 +1,6 @@
-#include "screen.h"
 #include "../kernel.h"
-
+#include "TextCursor.h"
+//#include "screen.h"
 /*
 * To access to cursor object : Screen::cursor->function;
 */
@@ -29,7 +29,7 @@ void Screen::print(char *str, u8 color)
 {
     while(*str != 0)
     {
-        Sreen::putchar(*str, color);
+        Screen::putchar(*str, color);
         str++;
     }
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "../kernel.h"
+#include "TextCursor.h"
 #define VIDEO_MEMORY 0xB8000
 #define SIZE_SCREEN 2000
 #define LENGTH_LINE 80
