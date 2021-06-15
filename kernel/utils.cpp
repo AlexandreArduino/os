@@ -7,22 +7,22 @@ unsigned short kernel::PrintNumberAutomaticPosition()
 
 void kernel::clear()
 {
-    Dev::Screen::clear();
+    clear();
 }
 
 void kernel::println(char *str)
 {
-    Dev::Screen::println(str, DEFAULT_COLOR_PRINT);
+    println(str, DEFAULT_COLOR_PRINT);
 }
 
 void kernel::print(char *str)
 {
-    Dev::Screen::print(str, DEFAULT_COLOR_PRINT);
+    print(str, DEFAULT_COLOR_PRINT);
 }
 
 void kernel::scroll(u8 n)
 {
-    Dev::Screen::scroll(n);
+    Screen::scroll(n);
 }
 
 void kernel::PrintInt(int value)

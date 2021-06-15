@@ -13,7 +13,6 @@ INPUT
     output/lib/string.o
     output/kernel/utils.o
     output/kernel/screen/TextCursor.o
-    output/dev/screen.o
     output/dev/integer.o
 )
 

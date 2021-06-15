@@ -6,11 +6,11 @@ void *__dso_handle;
 using namespace kernel;
 extern "C" void _start()
 {
-    TextCursor MainTextCursor(0);
-    Dev::Screen::init(MainTextCursor);
-    Dev::Screen::clear();
+    /*TextCursor MainTextCursor(0);
+    Screen::init(MainTextCursor);
+    Screen::clear();
     print("Kernel loaded at ");
     PrintHex(KERNEL_SPACE);
-    println("!");
+    println("!");*/
     while(1);
 }

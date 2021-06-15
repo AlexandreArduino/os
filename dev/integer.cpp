@@ -25,10 +25,10 @@ void Dev::Integer::print(int value, u8 color)
         count++;
     }
     if(IsNeg)
-        Dev::Screen::putchar('-', color);
+        Screen::::putchar('-', color);
     for(int i = 1; i < length + 1;i++)
     {
-        Dev::Screen::putchar(Buffer[i], color);
+        Screen::::putchar(Buffer[i], color);
     }
 }
 
@@ -46,8 +46,8 @@ unsigned short Dev::Integer::length(int value)
 void Dev::Integer::println(int value, u8 color)
 {
     Dev::Integer::print(value, color);
-    Dev::Screen::cursor->AddY(1);
-    Dev::Screen::cursor->SetLocation(Dev::Screen::cursor->GetX() - Dev::Screen::cursor->GetX(), Dev::Screen::cursor->GetY());
+    Screen::::cursor->AddY(1);
+    Screen::::cursor->SetLocation(Screen::::cursor->GetX() - Screen::::cursor->GetX(), Screen::::cursor->GetY());
 }
 
 void Dev::Hexadecimal::print(int value, u8 color)
@@ -72,21 +72,21 @@ void Dev::Hexadecimal::print(int value, u8 color)
     }
     if(IsNeg)
     {
-        Dev::Screen::putchar('-', color);
+        Screen::::putchar('-', color);
 
     }
-    Dev::Screen::print("0x", color);
+    Screen::::print("0x", color);
     for(int i = 1; i < length + 1;i++)
     {
-        Dev::Screen::putchar(Buffer[i], color);
+        Screen::::putchar(Buffer[i], color);
     }
 }
 
 void Dev::Hexadecimal::println(int value, u8 color)
 {
     Dev::Hexadecimal::print(value, color);
-    Dev::Screen::cursor->AddY(1);
-    Dev::Screen::cursor->SetLocation(Dev::Screen::cursor->GetX() - Dev::Screen::cursor->GetX(), Dev::Screen::cursor->GetY());
+    Screen::::cursor->AddY(1);
+    Screen::::cursor->SetLocation(Screen::::cursor->GetX() - Screen::::cursor->GetX(), Screen::::cursor->GetY());
 }
 
 unsigned short Dev::Hexadecimal::length(int value)

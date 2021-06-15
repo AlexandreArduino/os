@@ -1,5 +1,5 @@
 #pragma once
-#include "../types.h"
+#include "../kernel.h"
 #define VIDEO_MEMORY 0xB8000
 #define SIZE_SCREEN 2000
 #define LENGTH_LINE 80
@@ -20,34 +20,16 @@
 #define LIGHT_PURPLE 13
 #define YELLOW 14
 #define WHITE 15
-namespace screen
+namespace Screen
 {
+    void init(TextCursor _cursor);
+    void putchar(char c, unsigned int position, u8 color);
+    void putchar(char c, u8 color);
+    void print(char *str, u8 color);
+    void println(char *str, u8 color);
+    void print(char *str, unsigned int position, u8 color);
+    void println(char *str, unsigned int position, u8 color);
+    void scroll(u8 NumberLines);
     void clear();
-
-    namespace TextCursor
-    {
-        extern unsigned short x;
-        extern unsigned short y;
-        extern unsigned short location;
-        unsigned short GetLocation(unsigned short x, unsigned short y);
-        void SetPosition(unsigned short position);
-        void Refresh(unsigned short x, unsigned short y);
-        void RefreshWithLocation();
-        void AddValueCursor(unsigned short value);
-    };
-    namespace Text
-    {
-        void putchar(char c, unsigned short color, unsigned short x, unsigned short y);
-        void putchar(char c, unsigned short color, unsigned short position);
-        void print(char *str, unsigned short color, unsigned short position);
-        void print(char *str, unsigned short color, unsigned short x, unsigned short y);
-        unsigned short GetLocation(unsigned short x, unsigned short y);
-        void scroll(u8 NumberLines);
-    };
-
-    namespace Integer
-    {
-        void PrintInt(int value, u8 base, unsigned short position, u8 color);
-        void PrintInt(int value, u8 base, unsigned short x, unsigned short y, u8 color);
-    };
+    extern TextCursor *cursor;
 };

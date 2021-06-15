@@ -9,7 +9,7 @@
 #include "../lib/math.h"
 // #include "../dev/cursor.h"
 #include "screen/TextCursor.h"
-#include "../dev/screen.h"
+// #include "../dev/screen.h"
 #include "../dev/integer.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define KERNEL_SPACE 0x8600
