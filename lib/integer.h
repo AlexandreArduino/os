@@ -1,19 +1,20 @@
-#ifndef __LIB_INTEGER__H
-#define __LIB_INTEGER__H
+#pragma once
 #include "../kernel/kernel.h"
-namespace lib
+#define DECIMAL_BASE 10
+#define HEXADECIMAL_BASE 16
+#define ASCII_OFFSET 48
+ 
+namespace Integer
 {
-    namespace integer
-    {
-        void print(int value, unsigned short position, u8 color);
-        void print(int value, unsigned short x, unsigned short y, u8 color);
-        void println(int value, unsigned short position, u8 color);
-        void println(int value, unsigned short x, unsigned short y, u8 color);
-        unsigned short length(int value);
-    };
-    namespace hexadecimal
-    {
-        unsigned short length(int value);
-    };
+    void print(int value, u8 color);
+    void println(int value, u8 color);
+    unsigned short length(int value);
 };
-#endif
+
+namespace Hexadecimal
+{
+    extern char HexaArray[16];
+    void print(int value, u8 color);
+    void println(int value, u8 color);
+    unsigned short length(int value);
+};

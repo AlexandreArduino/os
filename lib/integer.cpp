@@ -1,65 +1,100 @@
+#include "integer.h"
 #include "../kernel/kernel.h"
 
-void lib::integer::print(int value, unsigned short position, u8 color)
+char Hexadecimal::HexaArray[16] = "0123456789ABCDEF";
+
+void Integer::print(int value, u8 color)
 {
-    // screen::log::print("Printing integer value ...");
-    int length = lib::integer::length(value);
+    bool IsNeg = false;
+    if(value < 0)
+    {
+        IsNeg = true;
+        value = -value;
+    }
+    unsigned short length = Integer::length(value);
     char Buffer[length + 1];
     Buffer[0] = '0';
-    // screen::log::print("Setting buffer ...");
     char c;
     int count = 0;
-    if(position % 2)
-        position++;
     while(value)
     {
-        c = value % DEC_BASE;
-        c += 48;
-        Buffer[length - count + 1] = c;
-        value = (int)value / DEC_BASE;
+        c = value % DECIMAL_BASE;
+        c += ASCII_OFFSET;
+        Buffer[length - count] = c;
+        value = (int)value / DECIMAL_BASE;
         count++;
     }
-    for(int i = length + 1; i > 1;i--)
+    if(IsNeg)
+        Screen::putchar('-', color);
+    for(int i = 1; i < length + 1;i++)
     {
-        screen::Text::putchar(Buffer[i], color, position + i*2 - 4);
+        Screen::putchar(Buffer[i], color);
     }
-    // screen::TextCursor::SetPosition(position + length);
 }
 
-void lib::integer::print(int value, unsigned short x, unsigned short y, u8 color)
+unsigned short Integer::length(int value)
 {
-    lib::integer::print(value, screen::TextCursor::GetLocation(x, y), color);
-}
-
-unsigned short lib::integer::length(int value)
-{
-    // screen::log::print("Getting length of integer ...");
     int count = 0;
     while(value)
     {
-        value /= DEC_BASE;
+        value = (int)value / DECIMAL_BASE;
         count++;
     }
     return count;
 }
 
-void lib::integer::println(int value, unsigned short position, u8 color)
+void Integer::println(int value, u8 color)
 {
-    
+    Integer::print(value, color);
+    Screen::cursor->AddY(1);
+    Screen::cursor->SetLocation(Screen::cursor->GetX() - Screen::cursor->GetX(), Screen::cursor->GetY());
 }
 
-void lib::integer::println(int value, unsigned short x, unsigned short y, u8 color)
+void Hexadecimal::print(int value, u8 color)
 {
-
-}
-
-
-unsigned short lib::hexadecimal::length(int value)
-{
-    unsigned short count = 0;
-    while(value > 0)
+    bool IsNeg = false;
+    if(value < 0)
     {
-        value = (int)value / HEXA_BASE;
+        IsNeg = true;
+        value = -value;
+    }
+    unsigned short length = Hexadecimal::length(value);
+    char Buffer[length + 1];
+    Buffer[0] = '0';
+    u8 c;
+    int count = 0;
+    while(value)
+    {
+        c = value % HEXADECIMAL_BASE;
+        Buffer[length - count] = Hexadecimal::HexaArray[c];
+        value = (int)value / HEXADECIMAL_BASE;
+        count++;
+    }
+    if(IsNeg)
+    {
+        Screen::putchar('-', color);
+
+    }
+    Screen::print("0x", color);
+    for(int i = 1; i < length + 1;i++)
+    {
+        Screen::putchar(Buffer[i], color);
+    }
+}
+
+void Hexadecimal::println(int value, u8 color)
+{
+    Hexadecimal::print(value, color);
+    Screen::cursor->AddY(1);
+    Screen::cursor->SetLocation(Screen::cursor->GetX() - Screen::cursor->GetX(), Screen::cursor->GetY());
+}
+
+unsigned short Hexadecimal::length(int value)
+{
+    int count = 0;
+    while(value)
+    {
+        value = (int)value / HEXADECIMAL_BASE;
         count++;
     }
     return count;

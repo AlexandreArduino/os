@@ -12,5 +12,9 @@ extern "C" void _start()
     print("Kernel loaded at ");
     PrintHex(KERNEL_SPACE);
     println("!");*/
+    clear();
+    print("Kernel loaded at ");
+    PrintHex(KERNEL_SPACE);
+    println("!");
     while(1);
 }
