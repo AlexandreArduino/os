@@ -13,7 +13,7 @@ INPUT
     output/lib/string.o
     output/kernel/utils.o
     output/kernel/screen/TextCursor.o
-    output/dev/gdt.o
+    output/kernel/gdt.o
 )
 
 OUTPUT

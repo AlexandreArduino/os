@@ -11,7 +11,8 @@
 #include "screen/TextCursor.h"
 // #include "../dev/screen.h"
 // #include "../dev/integer.h"
-#include "../dev/gdt.h"
+// #include "../dev/gdt.h"
+#include "gdt.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define BOOTLOADER_SPACE 0x7C00
 #define BOOTLOADER_EXTENDED_SPACE 0x7E00

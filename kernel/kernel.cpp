@@ -23,5 +23,6 @@ extern "C" void _start()
     print("Bottom of the stack at ");
     PrintHex(BOTTOM_STACK);
     println("!");
+    GDT::init();
     while(1);
 }
