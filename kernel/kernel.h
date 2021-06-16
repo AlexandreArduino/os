@@ -11,8 +11,13 @@
 #include "screen/TextCursor.h"
 // #include "../dev/screen.h"
 // #include "../dev/integer.h"
+#include "../dev/gdt.h"
 #define DEFAULT_COLOR_PRINT GRAY
+#define BOOTLOADER_SPACE 0x7C00
+#define BOOTLOADER_EXTENDED_SPACE 0x7E00
 #define KERNEL_SPACE 0x8600
+#define TOP_STACK 0x7C00
+#define BOTTOM_STACK 0x7D99
 namespace kernel
 {
     unsigned short PrintNumberAutomaticPosition();
@@ -24,5 +29,7 @@ namespace kernel
     void PrintIntLn(int value);
     void PrintHex(int value);
     void PrintHexLn(int value);
+    void sti();
+    void cli();
 };
 #endif

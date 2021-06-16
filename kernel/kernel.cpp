@@ -6,15 +6,22 @@ void *__dso_handle;
 using namespace kernel;
 extern "C" void _start()
 {
-    /*TextCursor MainTextCursor(0);
+    TextCursor MainTextCursor(0);
     Screen::init(MainTextCursor);
-    Screen::clear();
-    print("Kernel loaded at ");
-    PrintHex(KERNEL_SPACE);
-    println("!");*/
     clear();
     print("Kernel loaded at ");
     PrintHex(KERNEL_SPACE);
+    println("!");
+    print("Bootloader loaded from ");
+    PrintHex(BOOTLOADER_SPACE);
+    print(" to ");
+    PrintHex(BOOTLOADER_EXTENDED_SPACE);
+    println("!");
+    print("Top of the stack at ");
+    PrintHex(TOP_STACK);
+    println("!");
+    print("Bottom of the stack at ");
+    PrintHex(BOTTOM_STACK);
     println("!");
     while(1);
 }

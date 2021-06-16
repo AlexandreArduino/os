@@ -42,6 +42,7 @@ ckernel: kernel/kernel.cpp
 	#$(CCOMPILER) $(CFLAGS) -c dev/cursor.cpp -o output/dev/cursor.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/screen/TextCursor.cpp -o output/kernel/screen/TextCursor.o
 	#$(COMPILE_LINE) -c dev/integer.cpp -o output/dev/integer.o
+	$(COMPILE_LINE) -c dev/gdt.cpp -o output/dev/gdt.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880

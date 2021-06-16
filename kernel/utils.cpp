@@ -45,3 +45,13 @@ void kernel::PrintHexLn(int value)
 {
     Hexadecimal::println(value, DEFAULT_COLOR_PRINT);
 }
+
+void kernel::cli()
+{
+    asm volatile("cli"::);
+}
+
+void kernel::sti()
+{
+    asm volatile("sti"::);
+}
