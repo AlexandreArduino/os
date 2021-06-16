@@ -21,7 +21,6 @@
 #define BOTTOM_STACK 0x7D99
 namespace kernel
 {
-    unsigned short PrintNumberAutomaticPosition();
     void clear();
     void println(char *str);
     void print(char *str);
@@ -32,5 +31,6 @@ namespace kernel
     void PrintHexLn(int value);
     void sti();
     void cli();
+    void memcpy(void *dest, void *src, int length);
 };
 #endif

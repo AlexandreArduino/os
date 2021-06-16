@@ -1,11 +1,5 @@
 #include "kernel.h"
 
-unsigned short kernel::PrintNumberAutomaticPosition()
-{
-    // return screen::TextCursor::location*2 - 2;
-    return 0;
-}
-
 void kernel::clear()
 {
     Screen::clear();
@@ -54,4 +48,19 @@ void kernel::cli()
 void kernel::sti()
 {
     asm volatile("sti"::);
+}
+
+void kernel::memcpy(void *dest, void *src, int length)
+{
+    kernel::print("Copying in memory from ");
+    kernel::PrintHex(src);
+    kernel::print(" to ");
+    kernel::PrintHex(dest);
+    kernel::println(" ...");
+    char *_src = (char*)src;
+    char *_dest = (char*)dest;
+    for(int i = 0; i < length;i++)
+    {
+        _dest[i] = _src[i];
+    }
 }

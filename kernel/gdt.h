@@ -1,6 +1,8 @@
 #pragma once
 #include "kernel.h"
 #define GDT_PLACE_IN_MEMORY 0x800
+#define GDT_SIZE 0xFF
+#define NUMBER_DESCRIPTORS 3
 namespace GDT
 {
     void init();
@@ -20,4 +22,6 @@ namespace GDT
         u8 other:4;
         u8 base_24_31;
     }__attribute__((packed));
+    extern Descriptor kgdt[3];
+    extern Register kgdtr;
 };
