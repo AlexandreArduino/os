@@ -1,12 +1,9 @@
 #include "../kernel/kernel.h"
 
-u8 lib::string::Length(char *str)
+/*unsigned short string::length(char *str)
 {
-    int count = 0;
-    while(*str != 0)
-    {
+    unsigned short count = 0;
+    while(str[count] != NULL)
         count++;
-        str++;
-    }
     return count;
-}
+}*/

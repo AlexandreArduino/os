@@ -14,6 +14,7 @@ INPUT
     output/kernel/utils.o
     output/kernel/screen/TextCursor.o
     output/kernel/gdt.o
+    output/lib/string.o
 )
 
 OUTPUT

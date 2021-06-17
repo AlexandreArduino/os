@@ -9,9 +9,9 @@ extern "C" void _start()
     TextCursor MainTextCursor(0);
     Screen::init(MainTextCursor);
     clear();
-    print("Kernel loaded at ");
-    PrintHex(KERNEL_SPACE);
-    println("!");
+    print("Kernel loaded at ", BLUE);
+    PrintHex(KERNEL_SPACE, BLUE);
+    println("!", BLUE);
     print("Bootloader loaded from ");
     PrintHex(BOOTLOADER_SPACE);
     print(" to ");
@@ -23,6 +23,6 @@ extern "C" void _start()
     print("Bottom of the stack at ");
     PrintHex(BOTTOM_STACK);
     println("!");
-    GDT::init();
+    PrintIntLn(lib::math::pow(5, 10), GREEN);
     while(1);
 }

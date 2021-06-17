@@ -24,11 +24,17 @@ namespace kernel
     void clear();
     void println(char *str);
     void print(char *str);
+    void println(char *str, u8 color);
+    void print(char *str, u8 color);
     void scroll(u8 n);
     void PrintInt(int value);
     void PrintIntLn(int value);
+    void PrintInt(int value, u8 color);
+    void PrintIntLn(int value, u8 color);
     void PrintHex(int value);
     void PrintHexLn(int value);
+    void PrintHex(int value, u8 color);
+    void PrintHexLn(int value, u8 color);
     void sti();
     void cli();
     void memcpy(void *dest, void *src, int length);

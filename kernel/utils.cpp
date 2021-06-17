@@ -15,6 +15,16 @@ void kernel::print(char *str)
     Screen::print(str, DEFAULT_COLOR_PRINT);
 }
 
+void kernel::println(char *str, u8 color)
+{
+    Screen::println(str, color);
+}
+
+void kernel::print(char *str, u8 color)
+{
+    Screen::print(str, color);
+}
+
 void kernel::scroll(u8 n)
 {
     Screen::scroll(n);
@@ -30,6 +40,16 @@ void kernel::PrintIntLn(int value)
     Integer::println(value, DEFAULT_COLOR_PRINT);
 }
 
+void kernel::PrintInt(int value, u8 color)
+{
+    Integer::print(value, color);
+}
+
+void kernel::PrintIntLn(int value, u8 color)
+{
+    Integer::println(value, color);
+}
+
 void kernel::PrintHex(int value)
 {
     Hexadecimal::print(value, DEFAULT_COLOR_PRINT);
@@ -38,6 +58,16 @@ void kernel::PrintHex(int value)
 void kernel::PrintHexLn(int value)
 {
     Hexadecimal::println(value, DEFAULT_COLOR_PRINT);
+}
+
+void kernel::PrintHex(int value, u8 color)
+{
+    Hexadecimal::print(value, color);
+}
+
+void kernel::PrintHexLn(int value, u8 color)
+{
+    Hexadecimal::println(value, color);
 }
 
 void kernel::cli()

@@ -1,11 +1,7 @@
-#ifndef __LIB__STRING_H
-#define __LIB__STRING_H
-#include "../kernel/types.h"
-namespace lib
+#pragma once
+#include "../kernel/kernel.h"
+
+namespace string
 {
-    namespace string
-    {
-        u8 Length(char *str);
-    };
+    unsigned short length(char *str);
 };
-#endif
