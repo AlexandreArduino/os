@@ -20,6 +20,8 @@ INPUT
     output/init/kernel.o
     output/init/gdt.o
     output/init/gdt_asm.o
+    output/kernel/interrupts.o
+    output/kernel/LoadIdt.o
 )
 
 OUTPUT

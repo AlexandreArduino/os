@@ -17,6 +17,7 @@
 #include "../test/screen.h"
 #include "../init/kernel.h"
 #include "../init/gdt.h"
+#include "interrupts.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define BOOTLOADER_SPACE 0x7C00
 #define BOOTLOADER_EXTENDED_SPACE 0x7E00

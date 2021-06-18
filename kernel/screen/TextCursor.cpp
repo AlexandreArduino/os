@@ -30,6 +30,7 @@ int TextCursor::VerifCoos(int location)
     else if(location > SIZE_SCREEN)
     {
         Screen::scroll(1);
+        TextCursor::SetLocation(0, TextCursor::GetY());
         return SIZE_SCREEN - 1;
     }
     else
