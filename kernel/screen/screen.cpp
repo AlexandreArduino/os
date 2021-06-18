@@ -88,3 +88,26 @@ void Screen::clear()
     }
     cursor->SetLocation(0);
 }
+
+
+void Screen::ClearLine(u8 LineNumber)
+{
+    char *video;
+    for(int i = 0; i < LENGTH_LINE*2; i+=2)
+    {
+        video = (char*)(VIDEO_MEMORY + LineNumber*LENGTH_LINE + i);
+        *video = ' ';
+        video++;
+        *video = 0;
+    }
+}
+
+void Screen::ClearChar(unsigned int position)
+{
+    if(position % 2)
+        position --;
+    char *video = (char*)(VIDEO_MEMORY + position * 2);
+    *video = ' ';
+    video++;
+    *video = 0;   
+}

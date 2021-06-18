@@ -32,5 +32,7 @@ namespace Screen
     void println(char *str, unsigned int position, u8 color);
     void scroll(u8 NumberLines);
     void clear();
+    void ClearLine(u8 LineNumber);
+    void ClearChar(unsigned int position);
     extern TextCursor *cursor;
 };

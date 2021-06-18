@@ -2,7 +2,7 @@ CCOMPILER = gcc
 CFLAGS =  -w -Wall -O0 -fno-stack-protector -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -fpermissive
 COMPILE_LINE = $(CCOMPILER) $(CFLAGS)
 LDFILE = link.ld
-MAIN_ROUTINE = clean cbootloader ckernel clink cboot
+MAIN_ROUTINE = clean cbootloader ckernel cinit ctest clink cboot
 ASMCOMPILER = nasm
 ASMFLAGS = -f elf64
 ASMFLAGS_BOOTLOADER = -f bin
@@ -18,6 +18,8 @@ clean:
 	mkdir output/kernel/hardware
 	mkdir output/lib
 	mkdir output/dev
+	mkdir output/test
+	mkdir output/init
 depencies:
 	sudo apt-get install nasm gcc g++ -y
 clear: output/
@@ -35,16 +37,16 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c lib/integer.cpp -o output/lib/integer.o
 	$(CCOMPILER) $(CFLAGS) -c lib/math.cpp -o output/lib/math.o
 	$(CCOMPILER) $(CFLAGS) -c lib/string.cpp -o output/lib/string.o
-	#$(CCOMPILER) $(CFLAGS) -c dev/scroll.cpp -o output/dev/scroll.o
-	#$(CCOMPILER) $(CFLAGS) -c dev/cast.cpp -o output/dev/cast.o
-	#$(CCOMPILER) $(CFLAGS) -c dev/print.cpp -o output/dev/print.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/utils.cpp -o output/kernel/utils.o
-	#$(CCOMPILER) $(CFLAGS) -c dev/cursor.cpp -o output/dev/cursor.o
 	$(CCOMPILER) $(CFLAGS) -c kernel/screen/TextCursor.cpp -o output/kernel/screen/TextCursor.o
-	#$(COMPILE_LINE) -c dev/integer.cpp -o output/dev/integer.o
-	#$(COMPILE_LINE) -c dev/gdt.cpp -o output/dev/gdt.o
-	$(COMPILE_LINE) -c kernel/gdt.cpp -o output/kernel/gdt.o
 	$(COMPILE_LINE) -c lib/string.cpp -o output/lib/string.o
+	$(COMPILE_LINE) -c lib/float.cpp -o output/lib/float.o
+ctest:
+	$(COMPILE_LINE) -c test/math.cpp -o output/test/math.o
+	$(COMPILE_LINE) -c test/screen.cpp -o output/test/screen.o
+cinit:
+	$(COMPILE_LINE) -c init/kernel.cpp -o output/init/kernel.o
+	$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880

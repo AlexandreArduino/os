@@ -28,7 +28,10 @@ int TextCursor::VerifCoos(int location)
     if(location < 0)
         return 0;
     else if(location > SIZE_SCREEN)
+    {
+        Screen::scroll(1);
         return SIZE_SCREEN - 1;
+    }
     else
         return location;
 }

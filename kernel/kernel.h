@@ -12,13 +12,18 @@
 // #include "../dev/screen.h"
 // #include "../dev/integer.h"
 // #include "../dev/gdt.h"
-#include "gdt.h"
+#include "../test/math.h"
+#include "../lib/float.h"
+#include "../test/screen.h"
+#include "../init/kernel.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define BOOTLOADER_SPACE 0x7C00
 #define BOOTLOADER_EXTENDED_SPACE 0x7E00
 #define KERNEL_SPACE 0x8600
 #define TOP_STACK 0x7C00
 #define BOTTOM_STACK 0x7D99
+#define TEST_ON_BOOT 0
+#define LOG_ON_BOOT 1
 namespace kernel
 {
     void clear();
@@ -38,6 +43,6 @@ namespace kernel
     void sti();
     void cli();
     void memcpy(void *dest, void *src, int length);
-    void init();
+    void test(); 
 };
 #endif

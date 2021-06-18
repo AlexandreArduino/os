@@ -13,8 +13,12 @@ INPUT
     output/lib/string.o
     output/kernel/utils.o
     output/kernel/screen/TextCursor.o
-    output/kernel/gdt.o
     output/lib/string.o
+    output/test/math.o
+    output/lib/float.o
+    output/test/screen.o
+    output/init/kernel.o
+    output/init/gdt.o
 )
 
 OUTPUT
