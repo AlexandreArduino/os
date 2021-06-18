@@ -38,5 +38,6 @@ namespace kernel
     void sti();
     void cli();
     void memcpy(void *dest, void *src, int length);
+    void init();
 };
 #endif

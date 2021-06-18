@@ -1,4 +1,6 @@
 def pow(value, exponent):
     first_val = value
-    for i in range(exponent-1): value *= first_val
+    first_val = 1
+    for i in range(exponent): value *= first_val
     return value
+print(pow(20, 10))

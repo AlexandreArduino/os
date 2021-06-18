@@ -1,6 +1,6 @@
 #include "../kernel/kernel.h"
 
-int lib::math::pow(int value, int exponent)
+long long lib::math::pow(int value, int exponent)
 {
     int fvalue = value;
     value = 1;
@@ -9,13 +9,15 @@ int lib::math::pow(int value, int exponent)
     return value;
 }
 
-int lib::math::sqrt(int value)
+int lib::math::SquareRoot(int value)
 {
-    if(value < 0){
-        kernel::println("Error, value in sqrt < 0!", RED);
-        return value;
+    if(value < 0)
+    {
+        kernel::println("Error, SquareRoot for n < 0 is forbidden!", RED);
+        return 0;
     }
     else if(!value)
         return 0;
-    else{}
+    else
+        return value;
 }

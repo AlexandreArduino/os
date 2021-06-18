@@ -94,3 +94,26 @@ void kernel::memcpy(void *dest, void *src, int length)
         _dest[i] = _src[i];
     }
 }
+
+void kernel::init()
+{
+    TextCursor MainTextCursor(0);
+    Screen::init(MainTextCursor);
+    clear();
+    print("Kernel loaded at ", LIGHT_PURPLE);
+    PrintHex(KERNEL_SPACE, LIGHT_PURPLE);
+    println("!", LIGHT_PURPLE);
+    print("Bootloader loaded from ");
+    PrintHex(BOOTLOADER_SPACE);
+    print(" to ");
+    PrintHex(BOOTLOADER_EXTENDED_SPACE);
+    println("!");
+    print("Top of the stack at ");
+    PrintHex(TOP_STACK);
+    println("!");
+    print("Bottom of the stack at ");
+    PrintHex(BOTTOM_STACK);
+    println("!");
+    print("Test of the pow function : 8^8 = ", YELLOW);
+    PrintIntLn(lib::math::pow(8, 8), YELLOW);
+}
