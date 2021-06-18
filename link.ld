@@ -19,6 +19,7 @@ INPUT
     output/test/screen.o
     output/init/kernel.o
     output/init/gdt.o
+    output/init/gdt_asm.o
 )
 
 OUTPUT

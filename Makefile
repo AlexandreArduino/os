@@ -47,6 +47,7 @@ ctest:
 cinit:
 	$(COMPILE_LINE) -c init/kernel.cpp -o output/init/kernel.o
 	$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
+	$(ASMCOMPILER) $(ASMFLAGS) init/gdt.asm -o output/init/gdt_asm.o
 clink: output/bootsect
 	x86_64-elf-ld -T"$(LDFILE)"
 	cat output/bootsect output/ckernel | dd of=output/os bs=512 count=2880

@@ -30,6 +30,7 @@ void init::kernel::DecideTest()
 
 void init::kernel::main()
 {
+    init::kernel::SetGDT();
     init::kernel::PrintAtBoot();
     init::kernel::DecideTest();
 }
