@@ -13,7 +13,6 @@ extern "C" void _start()
     init::kernel::SetGDT();
     Screen::success("Global Descriptor Table loaded successfully!");
     pic::init();
-    InitializeIDT();
-    // kernel::PrintHexLn(&gdtD);
+    InitIDT();
     while(1);
 }

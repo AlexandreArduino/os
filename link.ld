@@ -20,9 +20,9 @@ INPUT
     output/init/gdt_asm.o
     output/boot/BootInfos.o
     output/boot/kernel.o
-    output/init/interrupts.o
-    output/init/interruptsasm.o
     output/kernel/hardware/pic.o
+    output/init/idt.o
+    output/init/interruptsasm.o
 )
 
 OUTPUT
@@ -37,12 +37,6 @@ SECTIONS
     .text : ALIGN(0x1000)
     {
         *(.text)
-    }
-
-    .idt BLOCK(0x1000) : ALIGN(0x1000)
-    {
-        _idt = .;
-        . = . + 0x1000;
     }
 
     .data : ALIGN(0x1000)

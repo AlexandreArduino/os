@@ -1,0 +1,19 @@
+%macro idtentry 2
+dw %1 & 0xFFFF ; Low-Word of Offset
+dw %2          ; Code-Segment-Selector
+dw 0x8e00
+dw %1 >> 16
+%endmacro
+
+idt:
+times 0x10 dd 0,0 ; the first 0x10 entries
+idtentry __myInt10h,0x08 ; dunno what your code segment selector is, assuming 0x08
+idt_end:
+
+idtR:
+dw idt_end-idt-1
+dd idt
+
+__myInt10h:
+; Your code for int10h
+iret

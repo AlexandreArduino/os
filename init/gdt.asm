@@ -1,6 +1,8 @@
 [BITS 64]
 LoadGDT:
     lgdt [rdi]
+    jmp [0x08:EndGDTLoad]
+EndGDTLoad:
     mov ax, 0x10
     mov ds, ax
     mov es, ax

@@ -50,7 +50,10 @@ cinit:
 	# $(COMPILE_LINE) -c init/kernel.cpp -o output/init/kernel.o
 	$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
 	$(ASMCOMPILER) $(ASMFLAGS) init/gdt.asm -o output/init/gdt_asm.o
-	$(COMPILE_LINE) -c init/interrupts.cpp -o output/init/interrupts.o
+	# $(COMPILE_LINE) -c init/interrupts.cpp -o output/init/interrupts.o
+	# $(ASMCOMPILER) $(ASMFLAGS) init/interrupts.asm -o output/init/interruptsasm.o
+	# $(ASMCOMPILER) $(ASMFLAGS) init/stubinterrupts.asm -o output/init/stubinterrupts.o
+	$(COMPILE_LINE) -c init/idt.cpp -o output/init/idt.o
 	$(ASMCOMPILER) $(ASMFLAGS) init/interrupts.asm -o output/init/interruptsasm.o
 cbootprocess:
 	$(COMPILE_LINE) -c boot/BootInfos.cpp -o output/boot/BootInfos.o
