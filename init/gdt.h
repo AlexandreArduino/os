@@ -8,7 +8,7 @@ namespace init
         struct Descriptor
         {
             u16 Size;
-            long long Offset;
+            unsigned long long Offset;
         }__attribute__((packed));
 
         struct Entry

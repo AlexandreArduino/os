@@ -10,10 +10,8 @@ struct IDT64
     u16 OffsetMid;
     u32 OffsetHigh;
     u32 zero;
-};
-extern IDT64 _idt[256];
-extern long long isr1;
+}__attribute__((packed));
+
 void InitializeIDT();
-extern "C" void isr1_handler();
-extern "C" void LoadIDT();
+
 #endif

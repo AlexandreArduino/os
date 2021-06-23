@@ -22,6 +22,7 @@ INPUT
     output/boot/kernel.o
     output/init/interrupts.o
     output/init/interruptsasm.o
+    output/kernel/hardware/pic.o
 )
 
 OUTPUT

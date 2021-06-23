@@ -1,6 +1,6 @@
 #include "gdt.h"
 #include "../kernel/kernel.h"
-
+init::kernel::Descriptor gdtD;
 namespace init
 {
     namespace kernel
@@ -19,8 +19,7 @@ namespace init
 
 void init::kernel::SetGDT()
 {
-    init::kernel::Descriptor gdtD;
     gdtD.Size = sizeof(init::kernel::GDT) - 1;
-    gdtD.Offset = (long long)&init::kernel::DefaultGDT;
+    gdtD.Offset = (unsigned long long)&init::kernel::DefaultGDT;
     init::kernel::LoadGDT(&gdtD);
 }

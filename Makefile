@@ -42,6 +42,7 @@ ckernel: kernel/kernel.cpp
 	$(CCOMPILER) $(CFLAGS) -c kernel/screen/TextCursor.cpp -o output/kernel/screen/TextCursor.o
 	$(COMPILE_LINE) -c lib/string.cpp -o output/lib/string.o
 	$(COMPILE_LINE) -c lib/float.cpp -o output/lib/float.o
+	$(COMPILE_LINE) -c kernel/hardware/pic.cpp -o output/kernel/hardware/pic.o
 ctest:
 	$(COMPILE_LINE) -c test/math.cpp -o output/test/math.o
 	$(COMPILE_LINE) -c test/screen.cpp -o output/test/screen.o
