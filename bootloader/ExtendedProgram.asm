@@ -69,6 +69,7 @@ ProtectedMode:
 	call EditGDT
 	jmp codeseg:LongMode
 [BITS 64]
+
 LongMode:
 	jmp KERNEL_SPACE
 [BITS 16]

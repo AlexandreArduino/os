@@ -7,7 +7,6 @@ INPUT
     output/kernel/kernel.o
     output/kernel/screen/screen.o
     output/kernel/hardware/IO.o
-    output/kernel/screen/log.o
     output/lib/integer.o
     output/lib/math.o
     output/lib/string.o
@@ -17,11 +16,12 @@ INPUT
     output/test/math.o
     output/lib/float.o
     output/test/screen.o
-    output/init/kernel.o
     output/init/gdt.o
     output/init/gdt_asm.o
-    output/kernel/interrupts.o
-    output/kernel/LoadIdt.o
+    output/boot/BootInfos.o
+    output/boot/kernel.o
+    output/init/interrupts.o
+    output/init/interruptsasm.o
 )
 
 OUTPUT
@@ -36,6 +36,12 @@ SECTIONS
     .text : ALIGN(0x1000)
     {
         *(.text)
+    }
+
+    .idt BLOCK(0x1000) : ALIGN(0x1000)
+    {
+        _idt = .;
+        . = . + 0x1000;
     }
 
     .data : ALIGN(0x1000)

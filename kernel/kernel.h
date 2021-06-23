@@ -2,22 +2,17 @@
 #define __KERNEL_UTILS_H
 #include "types.h"
 #include "screen/screen.h"
-#include "screen/log.h"
 #include "hardware/IO.h"
 #include "../lib/integer.h"
 #include "../lib/string.h"
 #include "../lib/math.h"
-// #include "../dev/cursor.h"
 #include "screen/TextCursor.h"
-// #include "../dev/screen.h"
-// #include "../dev/integer.h"
-// #include "../dev/gdt.h"
 #include "../test/math.h"
 #include "../lib/float.h"
 #include "../test/screen.h"
-#include "../init/kernel.h"
 #include "../init/gdt.h"
-#include "interrupts.h"
+#include "../boot/BootInfos.h"
+#include "../init/interrupts.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define BOOTLOADER_SPACE 0x7C00
 #define BOOTLOADER_EXTENDED_SPACE 0x7E00
@@ -47,4 +42,5 @@ namespace kernel
     void memcpy(void *dest, void *src, int length);
     void test(); 
 };
+
 #endif

@@ -4,9 +4,14 @@ void *_Unwind_Resume;
 void *__cxa_atexit;
 void *__dso_handle;
 using namespace kernel;
-
 extern "C" void _start()
 {
-    init::kernel::main();
+    clear();
+    Screen::info("Kernel successfully loaded!");
+    BootProcess::Infos::main();
+    Screen::info("Setting up Global Descriptor Table...");
+    init::kernel::SetGDT();
+    Screen::success("Global Descriptor Table loaded successfully!");
+    InitializeIDT();
     while(1);
 }

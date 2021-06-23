@@ -21,6 +21,9 @@
 #define LIGHT_PURPLE 13
 #define YELLOW 14
 #define WHITE 15
+#define INFO_DEFAULT_COLOR GRAY
+#define SUCCESS_DEFAULT_COLOR GREEN
+#define ERROR_DEFAULT_COLOR RED
 namespace Screen
 {
     void init(TextCursor _cursor);
@@ -34,5 +37,8 @@ namespace Screen
     void clear();
     void ClearLine(u8 LineNumber);
     void ClearChar(unsigned int position);
+    void info(char *str);
+    void success(char *str);
+    void error(char *str);
     extern TextCursor *cursor;
 };

@@ -13,7 +13,7 @@ int lib::math::SquareRoot(int value)
 {
     if(value < 0)
     {
-        log::error("SquareRoot for n < 0 is forbidden!");
+        // log::error("SquareRoot for n < 0 is forbidden!");
         return 0;
     }
     else if(!value)

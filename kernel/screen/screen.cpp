@@ -111,3 +111,21 @@ void Screen::ClearChar(unsigned int position)
     video++;
     *video = 0;   
 }
+
+void Screen::info(char *str)
+{
+    Screen::print("[INFO] ", INFO_DEFAULT_COLOR);
+    Screen::println(str, INFO_DEFAULT_COLOR);
+}
+
+void Screen::success(char *str)
+{
+    Screen::print("[SUCCESS] ", SUCCESS_DEFAULT_COLOR);
+    Screen::println(str, SUCCESS_DEFAULT_COLOR);
+}
+
+void Screen::error(char *str)
+{
+    Screen::print("[ERROR] ", ERROR_DEFAULT_COLOR);
+    Screen::println(str, ERROR_DEFAULT_COLOR);
+}
