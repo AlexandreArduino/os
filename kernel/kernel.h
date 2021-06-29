@@ -10,10 +10,8 @@
 #include "../test/math.h"
 #include "../lib/float.h"
 #include "../test/screen.h"
-#include "../init/gdt.h"
 #include "../boot/BootInfos.h"
 #include "hardware/pic.h"
-#include "../init/idt.h"
 #define DEFAULT_COLOR_PRINT GRAY
 #define BOOTLOADER_SPACE 0x7C00
 #define BOOTLOADER_EXTENDED_SPACE 0x7E00

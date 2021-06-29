@@ -16,13 +16,9 @@ INPUT
     output/test/math.o
     output/lib/float.o
     output/test/screen.o
-    output/init/gdt.o
-    output/init/gdt_asm.o
     output/boot/BootInfos.o
     output/boot/kernel.o
     output/kernel/hardware/pic.o
-    output/init/idt.o
-    output/init/interruptsasm.o
 )
 
 OUTPUT
