@@ -7,8 +7,9 @@ using namespace kernel;
 extern "C" void _start()
 {
     clear();
-    Screen::info("Kernel successfully loaded!");
-    BootProcess::Infos::main();
+    Screen::success("Kernel successfully loaded!");
+    BootProcess::Infos::kernel();
     pic::init();
+    GDT::init();
     while(1);
 }

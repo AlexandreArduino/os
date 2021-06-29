@@ -114,8 +114,11 @@ void Screen::ClearChar(unsigned int position)
 
 void Screen::info(char *str)
 {
-    Screen::print("[INFO] ", INFO_DEFAULT_COLOR);
-    Screen::println(str, INFO_DEFAULT_COLOR);
+    /*Screen::print("[INFO] ", INFO_DEFAULT_COLOR);
+    Screen::println(str, INFO_DEFAULT_COLOR);*/
+    Screen::infowln(str);
+    cursor->AddY(1);
+    cursor->SetLocation(cursor->GetX() - cursor->GetX(), cursor->GetY());
 }
 
 void Screen::success(char *str)
@@ -128,4 +131,10 @@ void Screen::error(char *str)
 {
     Screen::print("[ERROR] ", ERROR_DEFAULT_COLOR);
     Screen::println(str, ERROR_DEFAULT_COLOR);
+}
+
+void Screen::infowln(char *str)
+{
+    Screen::print("[INFO] ", INFO_DEFAULT_COLOR);
+    Screen::print(str, INFO_DEFAULT_COLOR);
 }

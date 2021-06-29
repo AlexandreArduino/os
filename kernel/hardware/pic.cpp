@@ -1,7 +1,7 @@
 #include "../kernel.h"
 void pic::init()
 {
-    Screen::info("Setting up PIC...");
+	Screen::info("Initializing PIC...");
 	IO::outb(0x20, 0x11);
 	IO::outb(0xA0, 0x11);
 	IO::outb(0x21, 0x20);
@@ -12,5 +12,5 @@ void pic::init()
 	IO::outb(0xA1, 0x01);
 	IO::outb(0x21, 0x0);
 	IO::outb(0xA1, 0x0);
-    Screen::success("PIC set up successfully!");
+    Screen::success("PIC initialized successfully!");
 }

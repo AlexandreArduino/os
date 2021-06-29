@@ -40,5 +40,6 @@ namespace Screen
     void info(char *str);
     void success(char *str);
     void error(char *str);
+    void infowln(char *str); // wln = WithoutLine = Without '\n'
     extern TextCursor *cursor;
 };

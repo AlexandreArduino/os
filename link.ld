@@ -19,6 +19,8 @@ INPUT
     output/boot/BootInfos.o
     output/boot/kernel.o
     output/kernel/hardware/pic.o
+    output/init/gdt.o
+    output/init/gdtasm.o
 )
 
 OUTPUT

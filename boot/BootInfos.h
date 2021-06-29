@@ -6,6 +6,8 @@ namespace BootProcess
     namespace Infos
     {
         void kernel();
+        void StartInitPic();
+        void EndInitPic();
         void main();
         void KernelLogBootProcess();
     };

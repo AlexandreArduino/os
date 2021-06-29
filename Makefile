@@ -47,15 +47,8 @@ ctest:
 	$(COMPILE_LINE) -c test/math.cpp -o output/test/math.o
 	$(COMPILE_LINE) -c test/screen.cpp -o output/test/screen.o
 cinit:
-	echo .
-	# $(COMPILE_LINE) -c init/kernel.cpp -o output/init/kernel.o
-	#$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
-	#$(ASMCOMPILER) $(ASMFLAGS) init/gdt.asm -o output/init/gdt_asm.o
-	# $(COMPILE_LINE) -c init/interrupts.cpp -o output/init/interrupts.o
-	# $(ASMCOMPILER) $(ASMFLAGS) init/interrupts.asm -o output/init/interruptsasm.o
-	# $(ASMCOMPILER) $(ASMFLAGS) init/stubinterrupts.asm -o output/init/stubinterrupts.o
-	#$(COMPILE_LINE) -c init/idt.cpp -o output/init/idt.o
-	#$(ASMCOMPILER) $(ASMFLAGS) init/interrupts.asm -o output/init/interruptsasm.o
+	$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
+	$(ASMCOMPILER) $(ASMFLAGS) init/gdt.asm -o output/init/gdtasm.o
 cbootprocess:
 	$(COMPILE_LINE) -c boot/BootInfos.cpp -o output/boot/BootInfos.o
 	$(COMPILE_LINE) -c boot/kernel.cpp -o output/boot/kernel.o
