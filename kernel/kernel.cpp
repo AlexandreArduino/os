@@ -6,10 +6,5 @@ void *__dso_handle;
 using namespace kernel;
 extern "C" void _start()
 {
-    clear();
-    Screen::success("Kernel successfully loaded!");
-    BootProcess::Infos::kernel();
-    pic::init();
-    GDT::init();
     while(1);
 }

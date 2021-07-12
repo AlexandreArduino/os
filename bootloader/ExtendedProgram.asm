@@ -53,9 +53,6 @@ End16bits: db "Leaving 16 bits ...", 13, 10, 0
 
 [BITS 32]
 
-%include "bootloader/CPUID.asm"
-%include "bootloader/Paging.asm"
-
 ProtectedMode:
 	mov ax, dataseg
 	mov ds, ax
@@ -63,14 +60,6 @@ ProtectedMode:
 	mov es, ax
 	mov fs, ax
 	mov gs, ax
-	call DetectCPUID
-	call DetectLongMode
-	call SetIdentityPaging
-	call EditGDT
-	jmp codeseg:LongMode
-[BITS 64]
-
-LongMode:
-	jmp KERNEL_SPACE
+	jmp codeseg:KERNEL_SPACE
 [BITS 16]
 times 2048-($-$$) db 0

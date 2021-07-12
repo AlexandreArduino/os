@@ -2,7 +2,7 @@ CCOMPILER = gcc
 CFLAGS =  -w -Wall -O0 -fno-stack-protector -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -fpermissive
 COMPILE_LINE = $(CCOMPILER) $(CFLAGS)
 LDFILE = link.ld
-MAIN_ROUTINE = clean cbootloader ckernel cinit cbootprocess ctest clink cboot
+MAIN_ROUTINE = clean cbootloader ckernel cbootprocess ctest clink cboot
 ASMCOMPILER = nasm
 ASMFLAGS = -f elf64
 ASMFLAGS_BOOTLOADER = -f bin
@@ -46,9 +46,6 @@ ckernel: kernel/kernel.cpp
 ctest:
 	$(COMPILE_LINE) -c test/math.cpp -o output/test/math.o
 	$(COMPILE_LINE) -c test/screen.cpp -o output/test/screen.o
-cinit:
-	$(COMPILE_LINE) -c init/gdt.cpp -o output/init/gdt.o
-	$(ASMCOMPILER) $(ASMFLAGS) init/gdt.asm -o output/init/gdtasm.o
 cbootprocess:
 	$(COMPILE_LINE) -c boot/BootInfos.cpp -o output/boot/BootInfos.o
 	$(COMPILE_LINE) -c boot/kernel.cpp -o output/boot/kernel.o
