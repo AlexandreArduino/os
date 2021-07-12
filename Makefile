@@ -26,7 +26,7 @@ depencies:
 clear: output/
 	rm -Rf output
 
-cbootloader: bootloader/boot.asm bootloader/ExtendedProgram.asm bootloader/kernel.asm
+cbootloader: bootloader/boot.asm bootloader/ExtendedProgram.asm
 	$(ASMCOMPILER) $(ASMFLAGS_BOOTLOADER) -o output/bootloader/bootloader bootloader/boot.asm
 	$(ASMCOMPILER) $(ASMFLAGS_BOOTLOADER) -o output/bootloader/ExtendedProgram bootloader/ExtendedProgram.asm
 	cat output/bootloader/bootloader output/bootloader/ExtendedProgram | dd of=output/bootsect bs=512 count=2880
@@ -59,6 +59,6 @@ clink: output/bootsect
 	rm output/bootsect
 	rm output/ckernel
 cboot: output/os
-	qemu-system-x86_64 output/os
+	qemu output/os
 cboot_infos: output/os
 	qemu-system-x86_64 output/os -d int -no-reboot -no-shutdown
